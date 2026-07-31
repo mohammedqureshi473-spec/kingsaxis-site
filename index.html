@@ -5587,5 +5587,104 @@ function rateReplyCommit(id){
   toast('Reply sent','Back with the Owner to authorize or reject.','good'); render();
 }
 </script>
+<script>
+'use strict';
+/* ═══════════ EXTENSION PACK v30 — USERS & ACCESS: INVITES · ROLE-LOCKED ACCESS · ADMIN SUB-ROLES · GOOGLE / PASSWORD SIGN-IN ═══════════ */
+
+/* Admin sub-roles: what each admin post may touch. Deny-by-default — everything
+   not listed is invisible to that user. */
+const ADMIN_SUBROLES={
+  'Admin Manager':    {desc:'Full admin: users & invitations, all modules, approvals', mods:['Users & access','All modules','Rate requests','Joint approvals','Reports']},
+  'Admin Supervisor': {desc:'Operations oversight — no user management, no legal',    mods:['Fleet','Depots','Stations (view)','Logistics','MIS','Alerts']},
+  'Admin Accounts':   {desc:'Accounts & billing only',                                mods:['Accounts & Billing (3 sections)','Delivery-Received Notes','Deduction actions','Archives']},
+  'Admin IT':         {desc:'Devices, integrations & platform health only',           mods:['Admin & Devices','IoT onboarding','Telemetry health','Audit log (read)']},
+  'Admin HR':         {desc:'Staff, ID cards & driver access only',                   mods:['Staff & ID Cards','Driver Access Control','Attendance']},
+  'Legal & Compliance':{desc:'Legal & Contracts module only',                         mods:['Legal & Contracts','Claims (read)','Dossiers (read)']},
+};
+/* enrich existing users + add examples of sub-roles & sign-in methods */
+USERS.forEach(u=>{ u.email=u.email||(u.name.toLowerCase().replace(/[^a-z]/g,'.').replace(/\.+/g,'.')+'@kingsgas.com'); u.signin=u.signin||'Username + password'; u.sub=u.sub||null; u.last=u.last||'Today · 09:1'+(2+(u.name.length%7)); });
+USERS[0].email='mohammedqureshi473@gmail.com'; USERS[0].signin='Google (Gmail)';
+USERS[1].sub='Admin Manager';
+USERS.push(
+ {name:'F. D Souza',  role:'Admin', sub:'Admin Accounts', scope:'All (accounts only)', card:'RF-00-0007', status:'Active',  email:'f.dsouza@kingsgas.com',  signin:'Google (Gmail)',        last:'Today · 08:44'},
+ {name:'T. Nair',     role:'Admin', sub:'Admin IT',       scope:'All (devices only)',  card:'RF-00-0008', status:'Active',  email:'t.nair@kingsgas.com',    signin:'Username + password',   last:'Yesterday · 18:02'},
+ {name:'K. Yadav',    role:'Tanker Driver', sub:null,     scope:'Own trips only',      card:'KGS-2026-00171', status:'Active', email:'—', signin:'Card no + OTP',        last:'Today · 06:25'},
+ {name:'S. Iyer',     role:'Admin', sub:'Admin HR',       scope:'All (staff only)',    card:'—',          status:'Invited — awaiting first sign-in', email:'s.iyer@kingsgas.com', signin:'Google (Gmail)', last:'—'}
+);
+let INVITES=[
+ {id:'INV-U-014', email:'s.iyer@kingsgas.com', role:'Admin', sub:'Admin HR', scope:'All (staff only)', method:'Google (Gmail)', by:'Owner', at:'23 Jul 2026', status:'Sent — link valid 7 days'},
+];
+
+function vUsers(){
+  if(!['owner','admin'].includes(S.role)) return pageH('Users & Access','Access denied')+'<div class="card"><div class="empty">Only the Owner and Admin manage users.</div></div>';
+  return pageH('Users & Access','Every user · every role · every authorisation',
+    `<button class="btn btn-gold btn-sm" onclick="inviteUser()">✉ Invite user</button>`)+
+  `<div class="card"><div class="card-h"><div><h3>👥 Existing Users — ${USERS.length}</h3><div class="sub">Everyone who can sign in, with their locked role, scope and sign-in method. Access is deny-by-default: a user sees ONLY the modules of their role/sub-role — nothing else exists on their screen.</div></div></div>
+  <table><tr><th>User</th><th>Role / sub-role</th><th>Scope</th><th>Sign-in method</th><th>Last sign-in</th><th>Status</th><th></th></tr>
+  ${USERS.map((u,ix)=>`<tr ${String(u.status).includes('Suspended')?'style="opacity:.55"':''}>
+    <td><b>${u.name}</b><div style="font-size:10px;color:var(--muted)">${u.email}${u.card&&u.card!=='—'?' · '+u.card:''}</div></td>
+    <td>${u.role}${u.sub?`<div><span class="chip info" style="margin-top:3px">${u.sub}</span></div>`:''}</td>
+    <td style="font-size:11px">${u.scope}</td>
+    <td style="font-size:11px">${u.signin==='Google (Gmail)'?'🔵 Google (Gmail)':u.signin==='Card no + OTP'?'🪪 Card no + OTP':'🔑 Username + password'}</td>
+    <td style="font-size:11px">${u.last}</td>
+    <td><span class="chip ${String(u.status)==='Active'?'good':String(u.status).includes('Invited')?'warn':'crit'}">${u.status}</span></td>
+    <td style="white-space:nowrap">${u.role!=='Owner'?(String(u.status).includes('Suspended')
+      ?`<button class="btn btn-ghost btn-sm" onclick="USERS[${ix}].status='Active';addFeed('👥','${u.name} reactivated by '+ROLES[S.role].user);render()">Reactivate</button>`
+      :`<button class="btn btn-danger btn-sm" onclick="USERS[${ix}].status='Suspended';addFeed('⛔','${u.name} suspended by '+ROLES[S.role].user+' — sign-in blocked immediately');toast('Suspended','Sign-in blocked; sessions terminated.','warn');render()">Suspend</button>`):''}</td></tr>`).join('')}
+  </table></div>
+  <div class="card" style="margin-top:16px"><div class="card-h"><div><h3>✉ Pending Invitations</h3><div class="sub">The invitation email carries a secure one-time link. The role is fixed at invite time — the person can only ever open what you authorised; changing it later needs Owner/Admin.</div></div></div>
+  <table><tr><th>Invite</th><th>Email</th><th>Role / sub-role</th><th>Scope</th><th>Sign-in</th><th>Sent by</th><th>Status</th><th></th></tr>
+  ${INVITES.map((iv,ix)=>`<tr><td><b>${iv.id}</b></td><td>${iv.email}</td><td>${iv.role}${iv.sub?' · '+iv.sub:''}</td><td style="font-size:11px">${iv.scope}</td><td style="font-size:11px">${iv.method}</td><td>${iv.by}<div style="font-size:10px;color:var(--muted)">${iv.at}</div></td><td><span class="chip warn">${iv.status}</span></td>
+  <td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="toast('Re-sent','Invitation email re-sent with a fresh 7-day link.','good')">Resend</button> <button class="btn btn-danger btn-sm" onclick="INVITES.splice(${ix},1);toast('Cancelled','Invitation link voided.','warn');render()">Cancel</button></td></tr>`).join('')||'<tr><td colspan="8"><div class="empty">No pending invitations.</div></td></tr>'}
+  </table></div>
+  <div class="card" style="margin-top:16px"><div class="card-h"><div><h3>🛡 Admin Sub-Roles — what each post may touch</h3><div class="sub">There are several posts inside "Admin". Each sub-role opens ONLY its own modules; everything else is invisible. Only the Owner (and Admin Manager) can invite users or change roles.</div></div></div>
+  <table><tr><th>Sub-role</th><th>Purpose</th><th>Modules opened</th></tr>
+  ${Object.entries(ADMIN_SUBROLES).map(([k,v])=>`<tr><td><b>${k}</b></td><td style="font-size:11.5px">${v.desc}</td><td style="font-size:11px">${v.mods.map(m=>`<span class="chip neutral" style="margin:2px">${m}</span>`).join('')}</td></tr>`).join('')}
+  </table></div>`;
+}
+function inviteUser(){
+  openModal(`<div class="modal-h"><h3>✉ Invite User</h3><button class="x-btn" onclick="closeModal()">✕</button></div>
+  <div class="modal-b">
+    <div class="field"><label>Email address * (Gmail or company email)</label><input id="iu-email" placeholder="name@gmail.com / name@kingsgas.com"></div>
+    <div class="field"><label>Role *</label><select id="iu-role" onchange="el('iu-sub-w').style.display=this.value==='Admin'?'block':'none'">
+      <option>Kings Gas Depot Manager</option><option>Retrofitter Supervisor</option><option>Fuel Station Supervisor</option>
+      <option>MSRTC Depot Manager</option><option>MSRTC HQ (view only)</option><option>Logistics Supervisor</option>
+      <option>Tanker Driver</option><option>Admin</option></select></div>
+    <div class="field" id="iu-sub-w" style="display:none"><label>Admin sub-role *</label><select id="iu-sub">${Object.keys(ADMIN_SUBROLES).map(k=>`<option>${k}</option>`).join('')}</select></div>
+    <div class="field"><label>Scope (depots / stations they may see) *</label><select id="iu-scope"><option>D-PUN-01</option><option>D-NSK-02</option><option>D-PUN-01 + D-NSK-02</option><option>ST-PUN-007</option><option>ST-NSK-013</option><option>All (admin scope)</option><option>Own trips only (driver)</option></select></div>
+    <div class="field"><label>Sign-in method *</label><select id="iu-method">
+      <option>Google (Gmail) — they click the invite link and sign in with their Gmail; no password to create or forget</option>
+      <option>Username + temporary password — system generates both; they must change the password at first sign-in</option></select></div>
+    <p style="font-size:11px;color:var(--muted);line-height:1.7">The invite email contains a one-time secure link (valid 7 days). Whatever they use to sign in, they land ONLY in the role and scope chosen here — deny-by-default, enforced by the server, audit-logged. 2FA (OTP to mobile) is enforced for Admin and Owner roles.</p>
+  </div>
+  <div class="modal-f"><button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+  <button class="btn btn-gold" onclick="inviteCommit()">Send Invitation</button></div>`);
+}
+function inviteCommit(){
+  const em=el('iu-email').value.trim(), role=el('iu-role').value, scope=el('iu-scope').value, method=el('iu-method').value.startsWith('Google')?'Google (Gmail)':'Username + password';
+  if(!em||!em.includes('@')) return toast('Valid email required','Enter the person\'s Gmail or company email.','warn');
+  const sub=role==='Admin'?el('iu-sub').value:null;
+  const iv={id:'INV-U-'+String(15+INVITES.length).padStart(3,'0'), email:em, role, sub, scope, method, by:ROLES[S.role].user, at:today(), status:'Sent — link valid 7 days'};
+  INVITES.unshift(iv);
+  USERS.push({name:em.split('@')[0], role, sub, scope, card:'—', status:'Invited — awaiting first sign-in', email:em, signin:method, last:'—'});
+  closeModal();
+  addFeed('✉','Invitation sent to <b>'+em+'</b> — '+role+(sub?' · '+sub:'')+' · scope '+scope+' · '+method);
+  ALERTS.unshift({t:'User invited — '+em, d:role+(sub?' ('+sub+')':'')+', scope '+scope+', sign-in via '+method+'. Access limited strictly to the authorised role.', lvl:'info', time:nowT(), to:'Owner · Admin'});
+  toast('Invitation sent',em+' can join via '+method+' — locked to '+role+(sub?' · '+sub:'')+'.','good'); render();
+}
+/* nav + router */
+NAV_BY_ROLE.owner.splice(NAV_BY_ROLE.owner.findIndex(i=>i[0]==='admin'),0,['users','👥','Users & Access']);
+const _render29=render;
+render=function(){
+  if(S.page==='users'){
+    content().innerHTML=vUsers();
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('on',n.dataset.page===S.page));
+    el('alert-n').textContent=ALERTS.length;
+    return;
+  }
+  _render29();
+};
+
+</script>
 </body>
 </html>
