@@ -436,36 +436,10 @@ td b{color:var(--ink);font-weight:600}
 
 </style>
 
-<script>
-/* ── DEMO ACCESS GATE (demo-grade only: the code is visible in page source).
-      Change DEMO_CODE before sharing. Remove this block to open the site. ── */
-(function(){
-  var DEMO_CODE='KINGS2026';
-  var ok=false;
-  var ov=document.createElement('div');
-  ov.id='gate';
-  ov.style.cssText='position:fixed;inset:0;background:#0b1128;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:Inter,system-ui,sans-serif';
-  ov.innerHTML='<div style="text-align:center;max-width:340px;padding:20px">'
-    +'<div style="font-size:22px;font-weight:800;letter-spacing:3px;color:#d4af37">KINGS AXIS</div>'
-    +'<div style="font-size:10px;letter-spacing:2.4px;color:#8296b8;margin:6px 0 22px">KINGSGAS COMMAND CENTRE · PRIVATE DEMO</div>'
-    +'<input id="gate-in" type="password" placeholder="Access code" style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #2a3350;background:#121a36;color:#fff;font-size:14px;text-align:center;letter-spacing:3px">'
-    +'<button id="gate-btn" style="margin-top:12px;width:100%;padding:12px;border-radius:10px;border:0;background:linear-gradient(135deg,#d4af37,#b8860b);color:#1a1405;font-weight:700;font-size:13px;letter-spacing:1px;cursor:pointer">ENTER</button>'
-    +'<div id="gate-err" style="font-size:11px;color:#f2a0a0;margin-top:10px;visibility:hidden">Incorrect code</div>'
-    +'<div style="font-size:9.5px;color:#5a6a8a;margin-top:18px;line-height:1.6">Confidential demonstration of the Kings Gas MSRTC LNG ERP.<br>Unauthorized access prohibited.</div></div>';
-  document.addEventListener('DOMContentLoaded',function(){
-    document.body.appendChild(ov);
-    var tryGo=function(){
-      if(document.getElementById('gate-in').value===DEMO_CODE){ ok=true; ov.remove(); }
-      else{ document.getElementById('gate-err').style.visibility='visible'; }
-    };
-    document.getElementById('gate-btn').onclick=tryGo;
-    document.getElementById('gate-in').addEventListener('keydown',function(e){ if(e.key==='Enter') tryGo(); });
-    document.getElementById('gate-in').focus();
-  });
-})();
-</script>
+
 </head>
 <body class="blue">
+<div id="public-simulation-notice" role="status" style="position:fixed;left:12px;right:12px;bottom:12px;z-index:100000;background:#fff3cd;color:#3d3100;border:2px solid #d4af37;border-radius:10px;padding:10px 16px;text-align:center;font:700 12px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.35)">PUBLIC UI SIMULATION · Illustrative synthetic data only · Authentication, invitations, 2FA, server authorization, session controls and live operational integrations are not active.</div>
 
 <!-- ══════════ LOGIN ══════════ -->
 <div id="login">
@@ -501,7 +475,7 @@ td b{color:var(--ink);font-weight:600}
       <div class="field"><label>User ID / RFID Card No.</label><input id="lg-user" placeholder="Auto-filled for demo" readonly></div>
       <button class="btn btn-gold" style="width:100%;justify-content:center;padding:13px" onclick="doLogin()">Enter Desktop &nbsp;→</button>
       <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:10px" onclick="themeModal()">◐ &nbsp;Choose design — Dark Royal · Light Luxe · Imperial Blue</button>
-      <p style="color:var(--muted);font-size:11px;margin-top:14px;text-align:center">256-bit encrypted · 2FA enforced for Admin & Owner · All sessions audited</p>
+      <p style="color:var(--muted);font-size:11px;margin-top:14px;text-align:center">UI simulation only · Authentication, 2FA and session auditing are not active</p>
     </div>
   </div>
 </div>
@@ -556,18 +530,18 @@ const today = () => new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'
 const nowT = () => new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
 
 const ROLES = {
-  owner:      {name:'Owner — Master Desktop', icon:'♛', desc:'Full control. All modules, all depots, realtime.', user:'Mohammed Qureshi', short:'MQ'},
-  admin:      {name:'Admin — Master Desktop', icon:'⚙', desc:'All modules + user, role & device management.', user:'A. Deshpande', short:'AD'},
-  depot:      {name:'Kings Gas Depot Manager', icon:'🏢', desc:'Operations, maintenance, claims & accounts of assigned depot.', user:'R. Kulkarni', short:'RK'},
-  retro:      {name:'Retrofitter Supervisor', icon:'🔧', desc:'Bus intake, conversion milestones, docs & handover.', user:'S. Pawar (GreenDrive Retrofits)', short:'SP'},
-  fuel:       {name:'Fuel Station Supervisor', icon:'⛽', desc:'Fueling, invoices, tank levels & deliveries.', user:'V. Jadhav', short:'VJ'},
-  msrtcDepot: {name:'MSRTC Depot Manager', icon:'🚌', desc:'Approve / disapprove handover checklist. View own depot.', user:'P. Shinde (MSRTC)', short:'PS'},
-  logistics:  {name:'Logistics Control', icon:'🚚', desc:'LNG tanker dispatch, tracking & geofenced delivery.', user:'N. Iyer', short:'NI'},
+  owner:      {name:'Owner — Master Desktop', icon:'♛', desc:'Full control. All modules, all depots, realtime.', user:'Demo Owner', short:'MQ'},
+  admin:      {name:'Admin — Master Desktop', icon:'⚙', desc:'All modules + user, role & device management.', user:'Demo Person 03', short:'AD'},
+  depot:      {name:'Kings Gas Depot Manager', icon:'🏢', desc:'Operations, maintenance, claims & accounts of assigned depot.', user:'Demo Person 06', short:'RK'},
+  retro:      {name:'Retrofitter Supervisor', icon:'🔧', desc:'Bus intake, conversion milestones, docs & handover.', user:'Demo Person 18 (GreenDrive Retrofits)', short:'SP'},
+  fuel:       {name:'Fuel Station Supervisor', icon:'⛽', desc:'Fueling, invoices, tank levels & deliveries.', user:'Demo Person 11', short:'VJ'},
+  msrtcDepot: {name:'MSRTC Depot Manager', icon:'🚌', desc:'Approve / disapprove handover checklist. View own depot.', user:'Demo Person 13 (MSRTC)', short:'PS'},
+  logistics:  {name:'Logistics Control', icon:'🚚', desc:'LNG tanker dispatch, tracking & geofenced delivery.', user:'Demo Person 19', short:'NI'},
   client:     {name:'MSRTC HQ — Performance View', icon:'📊', desc:'View-only performance desktop shared with client.', user:'MSRTC Head Office', short:'HQ'},
 };
 
 const DEPOTS = [
-  {id:'D-PUN-01', name:'Pune Swargate Depot', division:'Pune', buses:58, converted:41, mgr:'R. Kulkarni', msrtcMgr:'P. Shinde'},
+  {id:'D-PUN-01', name:'Pune Swargate Depot', division:'Pune', buses:58, converted:41, mgr:'Demo Person 06', msrtcMgr:'Demo Person 13'},
   {id:'D-NSK-02', name:'Nashik Panchavati Depot', division:'Nashik', buses:54, converted:36, mgr:'M. Gaikwad', msrtcMgr:'A. Patil'},
   {id:'D-AUR-03', name:'Chh. Sambhajinagar Depot', division:'Aurangabad', buses:52, converted:22, mgr:'S. Khan', msrtcMgr:'V. More'},
   {id:'D-NGP-04', name:'Nagpur Ganeshpeth Depot', division:'Nagpur', buses:60, converted:12, mgr:'T. Meshram', msrtcMgr:'D. Wankhede'},
@@ -581,11 +555,11 @@ const STATIONS = [
 ];
 
 const DRIVERS = [
-  {id:'DRV-4471', name:'Santosh Bhosale', depot:'D-PUN-01', emp:'MSRTC/PN/22841', card:'RF-88-4471', score:92, trips:412, harsh:3},
-  {id:'DRV-4472', name:'Imran Shaikh', depot:'D-PUN-01', emp:'MSRTC/PN/23310', card:'RF-88-4472', score:88, trips:389, harsh:7},
-  {id:'DRV-4473', name:'Vitthal Kadam', depot:'D-PUN-01', emp:'MSRTC/PN/21094', card:'RF-88-4473', score:76, trips:445, harsh:19},
-  {id:'DRV-5521', name:'Ganesh Wagh', depot:'D-NSK-02', emp:'MSRTC/NK/18211', card:'RF-88-5521', score:95, trips:501, harsh:1},
-  {id:'DRV-5522', name:'Rafiq Sayyed', depot:'D-NSK-02', emp:'MSRTC/NK/19876', card:'RF-88-5522', score:81, trips:367, harsh:11},
+  {id:'DRV-4471', name:'Demo Person 01', depot:'D-PUN-01', emp:'MSRTC/PN/22841', card:'DEMO-RFID-001', score:92, trips:412, harsh:3},
+  {id:'DRV-4472', name:'Demo Person 04', depot:'D-PUN-01', emp:'MSRTC/PN/23310', card:'DEMO-RFID-002', score:88, trips:389, harsh:7},
+  {id:'DRV-4473', name:'Demo Person 02', depot:'D-PUN-01', emp:'MSRTC/PN/21094', card:'DEMO-RFID-003', score:76, trips:445, harsh:19},
+  {id:'DRV-5521', name:'Demo Person 07', depot:'D-NSK-02', emp:'MSRTC/NK/18211', card:'DEMO-RFID-004', score:95, trips:501, harsh:1},
+  {id:'DRV-5522', name:'Demo Person 05', depot:'D-NSK-02', emp:'MSRTC/NK/19876', card:'DEMO-RFID-005', score:81, trips:367, harsh:11},
 ];
 
 const MILESTONES = [
@@ -618,18 +592,18 @@ const CHECKLIST = [
 ];
 
 let BUSES = [
-  {id:'MH-12-KG-4501', code:'KGB-0412', depot:'D-PUN-01', stage:'operational', ms:8, odo:41230, kmToday:187, fuelPct:74, oil:'OK', coolant:'OK', fit:true, bypassed:false, driver:'DRV-4471', kit:'GreenDrive GD-LNG-9 #GD8841', vlt:'IMEI 8672340981123', rc:'Endorsed 14 May 2026', accepted:'14 May 2026', invoice:'INV-RF-0412', chk:CHECKLIST.map(()=>'approved'), events:[]},
-  {id:'MH-12-KG-4502', code:'KGB-0413', depot:'D-PUN-01', stage:'operational', ms:8, odo:38790, kmToday:203, fuelPct:31, oil:'OK', coolant:'LOW', fit:false, bypassed:false, driver:'DRV-4472', kit:'GreenDrive GD-LNG-9 #GD8842', vlt:'IMEI 8672340981124', rc:'Endorsed 19 May 2026', accepted:'19 May 2026', invoice:'INV-RF-0413', chk:CHECKLIST.map(()=>'approved'), events:[]},
-  {id:'MH-12-KG-4503', code:'KGB-0414', depot:'D-PUN-01', stage:'inspection', ms:8, odo:52110, kmToday:0, fuelPct:88, oil:'OK', coolant:'OK', fit:true, bypassed:false, driver:null, kit:'GreenDrive GD-LNG-9 #GD8843', vlt:'IMEI 8672340981125', rc:'Filed — pending RTO', accepted:null, invoice:null, chk:['approved','approved','disapproved','approved','approved','approved','pending','approved','approved','approved','approved','approved','approved','disapproved','approved'], events:[]},
-  {id:'MH-14-KG-3308', code:'KGB-0415', depot:'D-PUN-01', stage:'conversion', ms:4, odo:61400, kmToday:0, fuelPct:0, oil:'—', coolant:'—', fit:false, bypassed:false, driver:null, kit:'GreenDrive GD-LNG-9 #GD8844', vlt:'— pending', rc:'—', accepted:null, invoice:null, chk:CHECKLIST.map(()=>'pending'), events:[]},
-  {id:'MH-15-KG-2210', code:'KGB-0416', depot:'D-NSK-02', stage:'operational', ms:8, odo:29850, kmToday:174, fuelPct:56, oil:'OK', coolant:'OK', fit:true, bypassed:false, driver:'DRV-5521', kit:'GreenDrive GD-LNG-9 #GD8619', vlt:'IMEI 8672340980417', rc:'Endorsed 02 Apr 2026', accepted:'02 Apr 2026', invoice:'INV-RF-0388', chk:CHECKLIST.map(()=>'approved'), events:[]},
-  {id:'MH-15-KG-2211', code:'KGB-0417', depot:'D-NSK-02', stage:'delivered', ms:0, odo:70210, kmToday:0, fuelPct:0, oil:'—', coolant:'—', fit:false, bypassed:false, driver:null, kit:'— to be fitted', vlt:'—', rc:'—', accepted:null, invoice:null, chk:CHECKLIST.map(()=>'pending'), events:[]},
+  {id:'DEMO-BUS-001', code:'KGB-0412', depot:'D-PUN-01', stage:'operational', ms:8, odo:41230, kmToday:187, fuelPct:74, oil:'OK', coolant:'OK', fit:true, bypassed:false, driver:'DRV-4471', kit:'GreenDrive GD-LNG-9 #GD8841', vlt:'IMEI 8672340981123', rc:'Endorsed 14 May 2026', accepted:'14 May 2026', invoice:'INV-RF-0412', chk:CHECKLIST.map(()=>'approved'), events:[]},
+  {id:'DEMO-BUS-002', code:'KGB-0413', depot:'D-PUN-01', stage:'operational', ms:8, odo:38790, kmToday:203, fuelPct:31, oil:'OK', coolant:'LOW', fit:false, bypassed:false, driver:'DRV-4472', kit:'GreenDrive GD-LNG-9 #GD8842', vlt:'IMEI 8672340981124', rc:'Endorsed 19 May 2026', accepted:'19 May 2026', invoice:'INV-RF-0413', chk:CHECKLIST.map(()=>'approved'), events:[]},
+  {id:'DEMO-BUS-003', code:'KGB-0414', depot:'D-PUN-01', stage:'inspection', ms:8, odo:52110, kmToday:0, fuelPct:88, oil:'OK', coolant:'OK', fit:true, bypassed:false, driver:null, kit:'GreenDrive GD-LNG-9 #GD8843', vlt:'IMEI 8672340981125', rc:'Filed — pending RTO', accepted:null, invoice:null, chk:['approved','approved','disapproved','approved','approved','approved','pending','approved','approved','approved','approved','approved','approved','disapproved','approved'], events:[]},
+  {id:'DEMO-BUS-004', code:'KGB-0415', depot:'D-PUN-01', stage:'conversion', ms:4, odo:61400, kmToday:0, fuelPct:0, oil:'—', coolant:'—', fit:false, bypassed:false, driver:null, kit:'GreenDrive GD-LNG-9 #GD8844', vlt:'— pending', rc:'—', accepted:null, invoice:null, chk:CHECKLIST.map(()=>'pending'), events:[]},
+  {id:'DEMO-BUS-005', code:'KGB-0416', depot:'D-NSK-02', stage:'operational', ms:8, odo:29850, kmToday:174, fuelPct:56, oil:'OK', coolant:'OK', fit:true, bypassed:false, driver:'DRV-5521', kit:'GreenDrive GD-LNG-9 #GD8619', vlt:'IMEI 8672340980417', rc:'Endorsed 02 Apr 2026', accepted:'02 Apr 2026', invoice:'INV-RF-0388', chk:CHECKLIST.map(()=>'approved'), events:[]},
+  {id:'DEMO-BUS-006', code:'KGB-0417', depot:'D-NSK-02', stage:'delivered', ms:0, odo:70210, kmToday:0, fuelPct:0, oil:'—', coolant:'—', fit:false, bypassed:false, driver:null, kit:'— to be fitted', vlt:'—', rc:'—', accepted:null, invoice:null, chk:CHECKLIST.map(()=>'pending'), events:[]},
 ];
 
 let INVOICES = [
-  {no:'INV-RF-0412', type:'Retrofit', party:'MSRTC', bus:'MH-12-KG-4501', amt:1940000, date:'14 May 2026', due:'10 Nov 2026', status:'Submitted', days:180},
-  {no:'INV-RF-0413', type:'Retrofit', party:'MSRTC', bus:'MH-12-KG-4502', amt:1940000, date:'19 May 2026', due:'15 Nov 2026', status:'Submitted', days:180},
-  {no:'INV-RF-0388', type:'Retrofit', party:'MSRTC', bus:'MH-15-KG-2210', amt:1940000, date:'02 Apr 2026', due:'29 Sep 2026', status:'Submitted', days:180},
+  {no:'INV-RF-0412', type:'Retrofit', party:'MSRTC', bus:'DEMO-BUS-001', amt:1940000, date:'14 May 2026', due:'10 Nov 2026', status:'Submitted', days:180},
+  {no:'INV-RF-0413', type:'Retrofit', party:'MSRTC', bus:'DEMO-BUS-002', amt:1940000, date:'19 May 2026', due:'15 Nov 2026', status:'Submitted', days:180},
+  {no:'INV-RF-0388', type:'Retrofit', party:'MSRTC', bus:'DEMO-BUS-005', amt:1940000, date:'02 Apr 2026', due:'29 Sep 2026', status:'Submitted', days:180},
   {no:'FS-PUN-2214', type:'Fueling', party:'MSRTC', bus:'Consolidated · 41 buses', amt:612480, date:'18 Jul 2026', due:'21 Jul 2026', status:'Paid', days:3},
   {no:'FS-PUN-2215', type:'Fueling', party:'MSRTC', bus:'Consolidated · 41 buses', amt:598310, date:'19 Jul 2026', due:'22 Jul 2026', status:'Awaiting', days:3},
   {no:'FS-NSK-1808', type:'Fueling', party:'MSRTC', bus:'Consolidated · 36 buses', amt:449200, date:'19 Jul 2026', due:'22 Jul 2026', status:'Awaiting', days:3},
@@ -637,45 +611,45 @@ let INVOICES = [
 ];
 
 let CLAIMS = [
-  {id:'CLM-0092', title:'Coolant hose failure — MH-12-KG-4502', depot:'D-PUN-01', raised:'19 Jul 2026', scope:'Retrofitter', status:'Open', amount:18500, evidence:['Daily scan log','CAN temp alert 19 Jul 09:42','Photo x3'], note:'Within kit warranty. Auto-routed to GreenDrive per tri-party contract §7.2.'},
-  {id:'CLM-0089', title:'Brake pad wear beyond limit — MH-15-KG-2210', depot:'D-NSK-02', raised:'14 Jul 2026', scope:'MSRTC', status:'Accepted by MSRTC', amount:0, evidence:['Daily scan log','Inspection photo'], note:'Outside Kings Gas / retrofitter scope (chassis item). Logged for accountability only.'},
+  {id:'CLM-0092', title:'Coolant hose failure — DEMO-BUS-002', depot:'D-PUN-01', raised:'19 Jul 2026', scope:'Retrofitter', status:'Open', amount:18500, evidence:['Daily scan log','CAN temp alert 19 Jul 09:42','Photo x3'], note:'Within kit warranty. Auto-routed to GreenDrive per tri-party contract §7.2.'},
+  {id:'CLM-0089', title:'Brake pad wear beyond limit — DEMO-BUS-005', depot:'D-NSK-02', raised:'14 Jul 2026', scope:'MSRTC', status:'Accepted by MSRTC', amount:0, evidence:['Daily scan log','Inspection photo'], note:'Outside Kings Gas / retrofitter scope (chassis item). Logged for accountability only.'},
   {id:'CLM-0084', title:'Dispenser-2 flow meter drift — ST-AUR-021', depot:'ST-AUR-021', raised:'08 Jul 2026', scope:'Kings Gas (internal)', status:'Resolved', amount:0, evidence:['Calibration cert'], note:'Recalibrated. W&M sticker renewed.'},
 ];
 
 let TANKERS = [
-  {id:'TNK-091', plate:'MH-04-LT-9921', from:'Dahej Terminal', to:'ST-AUR-021', qty:18.5, eta:'16:40', status:'En route', km:212, lock:'Sealed · geofence-armed'},
-  {id:'TNK-084', plate:'MH-04-LT-9814', from:'Dahej Terminal', to:'ST-NSK-013', qty:18.5, eta:'19:10', status:'En route', km:388, lock:'Sealed · geofence-armed'},
-  {id:'TNK-077', plate:'MH-04-LT-9702', from:'ST-PUN-007', to:'Dahej Terminal', qty:0, eta:'—', status:'Returning', km:141, lock:'Open (discharged in geofence)'},
+  {id:'TNK-091', plate:'DEMO-BUS-007', from:'Dahej Terminal', to:'ST-AUR-021', qty:18.5, eta:'16:40', status:'En route', km:212, lock:'Sealed · geofence-armed'},
+  {id:'TNK-084', plate:'DEMO-BUS-008', from:'Dahej Terminal', to:'ST-NSK-013', qty:18.5, eta:'19:10', status:'En route', km:388, lock:'Sealed · geofence-armed'},
+  {id:'TNK-077', plate:'DEMO-BUS-009', from:'ST-PUN-007', to:'Dahej Terminal', qty:0, eta:'—', status:'Returning', km:141, lock:'Open (discharged in geofence)'},
 ];
 
 let ALERTS = [
   {t:'Fire NOC expiring — ST-NSK-013', d:'✦ AI compliance watch: Fire NOC valid till 02 Sep 2026 (D-44). Renewal workflow opened, assigned to station supervisor.', lvl:'warn', time:'07:00', to:'Fuel Station · Admin · Master'},
-  {t:'Coolant LOW — MH-12-KG-4502', d:'CAN sensor reports coolant below min. Bus auto-flagged NOT FIT. Immobilizer armed for next start.', lvl:'crit', time:'09:42', to:'Depot Manager · Retrofitter · Master'},
+  {t:'Coolant LOW — DEMO-BUS-002', d:'CAN sensor reports coolant below min. Bus auto-flagged NOT FIT. Immobilizer armed for next start.', lvl:'crit', time:'09:42', to:'Depot Manager · Retrofitter · Master'},
   {t:'Tank level 23% — ST-AUR-021', d:'Below 25% reorder point. Auto refill indent LG-1121 raised to Logistics. Tanker TNK-091 dispatched.', lvl:'warn', time:'08:15', to:'Fuel Station · Logistics · Master'},
-  {t:'Harsh braking x3 — DRV-4473', d:'Vitthal Kadam, route PN-SW-12. Events written to trip & driver record.', lvl:'warn', time:'11:20', to:'Depot Manager · Master'},
+  {t:'Harsh braking x3 — DRV-4473', d:'Demo Person 02, route PN-SW-12. Events written to trip & driver record.', lvl:'warn', time:'11:20', to:'Depot Manager · Master'},
 ];
 
 let FEED = [
-  {ic:'⛽', t:'<b>MH-15-KG-2210</b> refueled 112.4 kg at ST-NSK-013 · invoice FS-line auto-added', time:'11:52'},
-  {ic:'🪪', t:'Driver <b>Santosh Bhosale</b> tapped RFID — trip started on MH-12-KG-4501', time:'11:31'},
-  {ic:'🔧', t:'Milestone 4/8 completed on <b>MH-14-KG-3308</b> — ECU & CAN integration (GreenDrive)', time:'11:07'},
+  {ic:'⛽', t:'<b>DEMO-BUS-005</b> refueled 112.4 kg at ST-NSK-013 · invoice FS-line auto-added', time:'11:52'},
+  {ic:'🪪', t:'Driver <b>Demo Person 01</b> tapped RFID — trip started on DEMO-BUS-001', time:'11:31'},
+  {ic:'🔧', t:'Milestone 4/8 completed on <b>DEMO-BUS-004</b> — ECU & CAN integration (GreenDrive)', time:'11:07'},
   {ic:'📄', t:'Retrofit invoice <b>INV-RF-0413</b> auto-generated to MSRTC — ₹19,40,000 · 180-day term', time:'10:48'},
   {ic:'🚚', t:'Tanker <b>TNK-091</b> crossed Pune bypass geofence — ETA ST-AUR-021 16:40', time:'10:22'},
 ];
 
 let FUELTX = [
-  {id:'TX-88121', bus:'MH-12-KG-4501', station:'ST-PUN-007', kg:98.2, rate:62.4, driver:'Santosh Bhosale', time:'06:14'},
-  {id:'TX-88134', bus:'MH-12-KG-4502', station:'ST-PUN-007', kg:104.7, rate:62.4, driver:'Imran Shaikh', time:'06:41'},
-  {id:'TX-88160', bus:'MH-15-KG-2210', station:'ST-NSK-013', kg:112.4, rate:62.4, driver:'Ganesh Wagh', time:'11:52'},
+  {id:'TX-88121', bus:'DEMO-BUS-001', station:'ST-PUN-007', kg:98.2, rate:62.4, driver:'Demo Person 01', time:'06:14'},
+  {id:'TX-88134', bus:'DEMO-BUS-002', station:'ST-PUN-007', kg:104.7, rate:62.4, driver:'Demo Person 04', time:'06:41'},
+  {id:'TX-88160', bus:'DEMO-BUS-005', station:'ST-NSK-013', kg:112.4, rate:62.4, driver:'Demo Person 07', time:'11:52'},
 ];
 
 let USERS = [
-  {name:'Mohammed Qureshi', role:'Owner', scope:'All', card:'RF-00-0001', status:'Active'},
-  {name:'A. Deshpande', role:'Admin', scope:'All', card:'RF-00-0002', status:'Active'},
-  {name:'R. Kulkarni', role:'Depot Manager', scope:'D-PUN-01', card:'RF-10-0441', status:'Active'},
-  {name:'S. Pawar', role:'Retrofitter Supervisor', scope:'D-PUN-01', card:'RF-30-0912', status:'Active'},
-  {name:'V. Jadhav', role:'Fuel Station Supervisor', scope:'ST-PUN-007', card:'RF-20-0688', status:'Active'},
-  {name:'P. Shinde', role:'MSRTC Depot Manager', scope:'D-PUN-01 (approve/view)', card:'RF-40-1103', status:'Active'},
+  {name:'Demo Owner', role:'Owner', scope:'All', card:'DEMO-RFID-006', status:'Active'},
+  {name:'Demo Person 03', role:'Admin', scope:'All', card:'DEMO-RFID-007', status:'Active'},
+  {name:'Demo Person 06', role:'Depot Manager', scope:'D-PUN-01', card:'DEMO-RFID-008', status:'Active'},
+  {name:'Demo Person 18', role:'Retrofitter Supervisor', scope:'D-PUN-01', card:'DEMO-RFID-009', status:'Active'},
+  {name:'Demo Person 11', role:'Fuel Station Supervisor', scope:'ST-PUN-007', card:'DEMO-RFID-010', status:'Active'},
+  {name:'Demo Person 13', role:'MSRTC Depot Manager', scope:'D-PUN-01 (approve/view)', card:'DEMO-RFID-011', status:'Active'},
   {name:'MSRTC Head Office', role:'Client — View Only', scope:'Performance desktop', card:'—', status:'Active'},
 ];
 
@@ -1113,12 +1087,12 @@ function depotMaint(d){
   return `<div class="card"><div class="card-h"><div><h3>Maintenance Jobs — per-km consumables (tri-party billed)</h3><div class="sub">Warranty scope: engine, kit, tank, radiator = retrofitter. Chassis = MSRTC.</div></div>
   <button class="btn btn-gold btn-sm" onclick="toast('Job card created','Assigned to GreenDrive depot team with SLA 24h.','good')">+ New Job Card</button></div>
   <table><tr><th>Job</th><th>Bus</th><th>Type</th><th>Scope / payer</th><th>Status</th><th>Cost</th></tr>
-    <tr><td><b>JOB-2291</b> · Coolant top-up + hose replace</td><td>MH-12-KG-4502</td><td>Corrective</td><td><span class="chip warn">Retrofitter (warranty)</span></td><td><span class="chip info">In progress</span></td><td class="num">₹0 (warranty)</td></tr>
-    <tr><td><b>JOB-2288</b> · 40k km service — filters, oil</td><td>MH-12-KG-4501</td><td>Scheduled</td><td><span class="chip gold">Per-km consumables</span></td><td><span class="chip good">Done 18 Jul</span></td><td class="num">₹6,240</td></tr>
-    <tr><td><b>JOB-2285</b> · Brake pads (reported, not our scope)</td><td>MH-15-KG-2210</td><td>Referred</td><td><span class="chip crit">MSRTC scope</span></td><td><span class="chip neutral">Handed to MSRTC</span></td><td class="num">—</td></tr>
+    <tr><td><b>JOB-2291</b> · Coolant top-up + hose replace</td><td>DEMO-BUS-002</td><td>Corrective</td><td><span class="chip warn">Retrofitter (warranty)</span></td><td><span class="chip info">In progress</span></td><td class="num">₹0 (warranty)</td></tr>
+    <tr><td><b>JOB-2288</b> · 40k km service — filters, oil</td><td>DEMO-BUS-001</td><td>Scheduled</td><td><span class="chip gold">Per-km consumables</span></td><td><span class="chip good">Done 18 Jul</span></td><td class="num">₹6,240</td></tr>
+    <tr><td><b>JOB-2285</b> · Brake pads (reported, not our scope)</td><td>DEMO-BUS-005</td><td>Referred</td><td><span class="chip crit">MSRTC scope</span></td><td><span class="chip neutral">Handed to MSRTC</span></td><td class="num">—</td></tr>
   </table></div>
   <div class="card" style="margin-top:16px"><div class="card-h"><h3>Preventive Schedule (AI-planned)</h3></div><div class="card-b" style="font-size:12.8px;color:var(--ink2);line-height:1.8">
-  ✦ Kings AI schedules preventive maintenance from live CAN data (engine hours, coolant temp trend, injector cycles) instead of fixed intervals — 41 buses on-track, 2 pulled forward this week (thermal drift detected on MH-12-KG-4502 before failure).</div></div>`;
+  ✦ Kings AI schedules preventive maintenance from live CAN data (engine hours, coolant temp trend, injector cycles) instead of fixed intervals — 41 buses on-track, 2 pulled forward this week (thermal drift detected on DEMO-BUS-002 before failure).</div></div>`;
 }
 function depotAccounts(d){
   return acctTables(INVOICES.filter(i=>i.no.includes('PUN')||i.type==='Retrofit'));
@@ -1196,7 +1170,7 @@ function inviteInspection(id){
     <p style="font-size:12.5px;color:var(--ink2);line-height:1.7;margin-top:10px">The MSRTC depot manager will be notified on ERP + email. They can only tick <b>Approve / Disapprove</b> against the 15 preset handover requirements — no other comments or conditions are possible. On full approval the bus auto-hands-over, the permanent bus code + QR is issued, and the ₹19,40,000 retrofit invoice is raised automatically (acceptance = invoice cannot be disputed).</p>
   </div>
   <div class="modal-f"><button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
-  <button class="btn btn-gold" onclick="const b=BUSES.find(x=>x.id==='${id}');b.stage='inspection';b.chk=CHECKLIST.map(()=>'pending');closeModal();addFeed('☑','MSRTC inspection invited for <b>${id}</b> — 15-point checklist issued to depot manager');toast('Inspection invited','P. Shinde (MSRTC) notified on ERP & email.','good');render()">Send Invitation</button></div>`);
+  <button class="btn btn-gold" onclick="const b=BUSES.find(x=>x.id==='${id}');b.stage='inspection';b.chk=CHECKLIST.map(()=>'pending');closeModal();addFeed('☑','MSRTC inspection invited for <b>${id}</b> — 15-point checklist issued to depot manager');toast('Inspection invited','Demo Person 13 (MSRTC) notified on ERP & email.','good');render()">Send Invitation</button></div>`);
 }
 
 /* ---------- INSPECTIONS (MSRTC Depot Manager) ---------- */
@@ -1473,7 +1447,7 @@ function openAICopilot(){
   openModal(`<div class="modal-h"><h3>✦ Kings AI Copilot</h3><button class="x-btn" onclick="closeModal()">✕</button></div>
   <div class="modal-b" style="font-size:13px;color:var(--ink2);line-height:1.8">
     <div class="sec-title" style="margin-top:0">Today's insights</div>
-    <div class="chk"><div class="c-t">MH-12-KG-4502 coolant trend predicted failure 2 days ago<div class="c-sub">Preventive job JOB-2291 was auto-raised — saved an on-road breakdown. Claim routed to retrofitter scope.</div></div></div>
+    <div class="chk"><div class="c-t">DEMO-BUS-002 coolant trend predicted failure 2 days ago<div class="c-sub">Preventive job JOB-2291 was auto-raised — saved an on-road breakdown. Claim routed to retrofitter scope.</div></div></div>
     <div class="chk"><div class="c-t">ST-AUR-021 will hit 15% by 17:00<div class="c-sub">Tanker TNK-091 arrives 16:40 — margin OK. No action needed.</div></div></div>
     <div class="chk"><div class="c-t">DRV-4473 harsh-braking pattern worsening<div class="c-sub">Recommend counseling; pattern correlates with 4% fuel-economy loss on route PN-SW-12.</div></div></div>
     <div class="chk"><div class="c-t">Conversion run-rate 126/wk vs 160 target<div class="c-sub">Bottleneck: RTO RC endorsements (avg 6.2 days). Suggest parallel document filing at milestone 6.</div></div></div>
@@ -1532,17 +1506,17 @@ handover = function(b){ _handover(b); const inv=INVOICES.find(x=>x.no===b.invoic
 
 /* ---------- DEVICES + GRANTS (dynamic registries) ---------- */
 let DEVICES = [
- {id:'IMEI 8672340981123', type:'AIS-140 VLT + CAN', bound:'MH-12-KG-4501', cfg:'MQTT ka/bus/KGB-0412 · 30s · CAN J1939', health:'Online'},
- {id:'IMEI 8672340981124', type:'AIS-140 VLT + CAN', bound:'MH-12-KG-4502', cfg:'MQTT ka/bus/KGB-0413 · 30s · CAN J1939', health:'Online'},
+ {id:'IMEI 8672340981123', type:'AIS-140 VLT + CAN', bound:'DEMO-BUS-001', cfg:'MQTT ka/bus/KGB-0412 · 30s · CAN J1939', health:'Online'},
+ {id:'IMEI 8672340981124', type:'AIS-140 VLT + CAN', bound:'DEMO-BUS-002', cfg:'MQTT ka/bus/KGB-0413 · 30s · CAN J1939', health:'Online'},
  {id:'RDR-GATE-PUN-01', type:'UHF RFID gate reader', bound:'D-PUN-01', cfg:'EPC Gen2 · Ethernet · lane 1-2', health:'Online'},
  {id:'DISP-PUN007-02', type:'LNG dispenser gateway', bound:'ST-PUN-007', cfg:'Modbus-RTU 9600 · RS485 · Coriolis', health:'Online'},
  {id:'ATG-PUN007', type:'Tank gauge (ATG)', bound:'ST-PUN-007', cfg:'4-20mA + Modbus · poll 60s', health:'Online'},
  {id:'LOCK-TNK-091', type:'Geofence valve e-lock', bound:'TNK-091', cfg:'Geofence ST-AUR-021 · 300m radius', health:'Sealed'},
 ];
 let GRANTS = [
- {user:'P. Shinde (MSRTC)', module:'Handover Inspection + Fleet view', scope:'D-PUN-01 only', by:'Owner'},
- {user:'S. Pawar (GreenDrive)', module:'Retrofit Console + Daily Scan', scope:'D-PUN-01 only', by:'Admin'},
- {user:'R. Kulkarni', module:'Depot Desktop (Ops/Maint/Claims/Accounts)', scope:'D-PUN-01 only', by:'Owner'},
+ {user:'Demo Person 13 (MSRTC)', module:'Handover Inspection + Fleet view', scope:'D-PUN-01 only', by:'Owner'},
+ {user:'Demo Person 18 (GreenDrive)', module:'Retrofit Console + Daily Scan', scope:'D-PUN-01 only', by:'Admin'},
+ {user:'Demo Person 06', module:'Depot Desktop (Ops/Maint/Claims/Accounts)', scope:'D-PUN-01 only', by:'Owner'},
 ];
 
 /* ---------- IoT DEVICE WIZARD ---------- */
@@ -1570,7 +1544,7 @@ function authModal(){
   if(!['owner','admin'].includes(S.role)) return toast('Not permitted','Only Owner and Admin can authorize modules.','crit');
   openModal(`<div class="modal-h"><h3>🔐 Authorize Module Access</h3><button class="x-btn" onclick="closeModal()">✕</button></div>
   <div class="modal-b">
-    <div class="field"><label>User</label><select id="au-user"><option>P. Shinde (MSRTC depot manager)</option><option>S. Pawar (GreenDrive retrofitter)</option><option>New MSRTC user…</option><option>New Kings Gas user…</option></select></div>
+    <div class="field"><label>User</label><select id="au-user"><option>Demo Person 13 (MSRTC depot manager)</option><option>Demo Person 18 (GreenDrive retrofitter)</option><option>New MSRTC user…</option><option>New Kings Gas user…</option></select></div>
     <div class="field"><label>Module to grant</label><select id="au-mod">
       <option>Handover Inspection (approve/disapprove only)</option><option>Fleet view (view only)</option>
       <option>Retrofit Console</option><option>Depot Desktop — Operations</option><option>Depot Desktop — Maintenance</option>
@@ -1658,7 +1632,7 @@ function vMap(){
 
 /* ---------- STAFF & ID CARDS ---------- */
 let STAFF = DRIVERS.map(d=>({ no:d.id, name:d.name, role:'Bus Driver', depot:d.depot, emp:d.emp, card:d.card, bio:'✓ 2 thumbs', pic:'✓', blood:'B+', status:'Active' }));
-STAFF.push({no:'KG-STF-0201',name:'Rajesh More',role:'Fuel Station Supervisor',depot:'ST-PUN-007',emp:'KG/EMP/0201',card:'RF-20-0688',bio:'✓ 2 thumbs',pic:'✓',blood:'O+',status:'Active'});
+STAFF.push({no:'KG-STF-0201',name:'Demo Person 08',role:'Fuel Station Supervisor',depot:'ST-PUN-007',emp:'KG/EMP/0201',card:'DEMO-RFID-010',bio:'✓ 2 thumbs',pic:'✓',blood:'O+',status:'Active'});
 let REG = {};
 function vStaff(){
   return pageH('Staff & ID Cards','Registration · RFID Cards · Biometrics',
@@ -1691,7 +1665,7 @@ function regWizard(step){
         <optgroup label="Fuel Station">
           <option>Fuel Station Supervisor</option><option>Fuel Station Fueler (Dispenser Operator)</option><option>Fuel Station Technician (Cryo / Dispenser)</option><option>Station Safety Officer (HSE)</option><option>Station Cashier / Billing</option></optgroup>
         <optgroup label="Logistics">
-          <option>Logistics Supervisor (Command Centre)</option><option>Tanker Driver — Payroll</option><option>Tanker Driver — Third-party</option><option>Logistics Dispatcher</option></optgroup>
+          <option>Logistics Demo Supervisor</option><option>Tanker Driver — Payroll</option><option>Tanker Driver — Third-party</option><option>Logistics Dispatcher</option></optgroup>
         <optgroup label="Administration">
           <option>Admin Manager</option><option>Admin Supervisor</option><option>Admin Accounts (Accounts & Billing)</option><option>Admin IT (Systems & Devices)</option><option>Admin HR & Payroll</option><option>Legal & Compliance Executive</option></optgroup>
         <optgroup label="Other">
@@ -1811,7 +1785,7 @@ function invoicePreview(no){
     <div style="display:flex;justify-content:space-between;align-items:flex-start">
       <div style="display:flex;gap:10px;align-items:center">
         <img src="${KG_LOGO}" style="width:42px;height:42px">
-        <div><div style="font-weight:800;letter-spacing:2.5px;color:#a8842c">KINGS GAS</div><div style="font-size:8.5px;color:#888;letter-spacing:1px">GSTIN 27AAICK5225A1ZV · CIN U24290MH2020PTC352527 · +91 90463 38555</div></div>
+        <div><div style="font-weight:800;letter-spacing:2.5px;color:#a8842c">KINGS GAS</div><div style="font-size:8.5px;color:#888;letter-spacing:1px">GSTIN 27AAICK5225A1ZV · CIN U24290MH2020PTC352527 · 00000 00001</div></div>
       </div>
       <div style="text-align:right">${qrRaw(i.no+'|'+i.amt+'|'+(i.dcn||''),74)}<div style="font-size:8px;color:#888;margin-top:3px">Scan to verify on ERP</div></div>
     </div>
@@ -2285,9 +2259,9 @@ function depotAccounts(d){
 
 /* Depot access registry — set by Admin/Owner only. Demo maps one user per role. */
 let DEPOT_ACCESS = {
-  depot:      ['D-PUN-01'],                 // R. Kulkarni — KG depot manager
-  retro:      ['D-PUN-01','D-NSK-02'],      // S. Pawar — retrofitter (2 depots granted)
-  msrtcDepot: ['D-PUN-01'],                 // P. Shinde — MSRTC depot manager
+  depot:      ['D-PUN-01'],                 // Demo Person 06 — KG depot manager
+  retro:      ['D-PUN-01','D-NSK-02'],      // Demo Person 18 — retrofitter (2 depots granted)
+  msrtcDepot: ['D-PUN-01'],                 // Demo Person 13 — MSRTC depot manager
 };
 function allowedDepots(){
   if(['owner','admin','client','logistics','fuel'].includes(S.role)) return DEPOTS.map(d=>d.id);
@@ -2429,9 +2403,9 @@ function authModal(){
   openModal(`<div class="modal-h"><h3>🔐 Authorize Module & Depot Access</h3><button class="x-btn" onclick="closeModal()">✕</button></div>
   <div class="modal-b">
     <div class="field"><label>User / account</label><select id="au-user">
-      <option value="depot">R. Kulkarni — Kings Gas Depot Manager</option>
-      <option value="retro">S. Pawar — Retrofitter Supervisor (GreenDrive)</option>
-      <option value="msrtcDepot">P. Shinde — MSRTC Depot Manager</option>
+      <option value="depot">Demo Person 06 — Kings Gas Depot Manager</option>
+      <option value="retro">Demo Person 18 — Retrofitter Demo Supervisor</option>
+      <option value="msrtcDepot">Demo Person 13 — MSRTC Depot Manager</option>
       <option value="">New user…</option></select></div>
     <div class="field"><label>Module to grant</label><select id="au-mod">
       <option>Depot Desktop (Ops / Maintenance / Claims / Accounts)</option>
@@ -2887,7 +2861,7 @@ function legalDraft(){
     <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #a8842c;padding-bottom:10px">
       <div style="display:flex;gap:10px;align-items:center"><img src="${KG_LOGO}" style="width:40px;height:40px">
       <div><div style="font-weight:800;letter-spacing:2px;color:#a8842c">KINGS GAS PRIVATE LIMITED</div>
-      <div style="font-size:8.5px;color:#888">Khar West, Mumbai · CIN U24290MH2020PTC352527 · GSTIN 27AAICK5225A1ZV · +91 90463 38555</div></div></div>
+      <div style="font-size:8.5px;color:#888">Khar West, Mumbai · CIN U24290MH2020PTC352527 · GSTIN 27AAICK5225A1ZV · 00000 00001</div></div></div>
       <div style="text-align:right">${qrRaw(ref+'|'+dcn,64)}<div style="font-size:8px;color:#888">Verify on ERP</div></div>
     </div>
     <p style="margin-top:10px"><b>Ref:</b> ${ref} · <b>DCN:</b> ${dcn} · <b>Date:</b> ${today()}<br>
@@ -3311,23 +3285,23 @@ INVOICES.forEach(i=>{
 /* Detailed line items per fueling invoice (Coriolis-metered, per transaction) */
 const INV_LINES = {
   'FS-PUN-2215':[
-    {t:'05:58',tx:'TX-88118',bus:'MH-12-KG-4519',drv:'A. Kamble',dsp:1,kg:96.4},
-    {t:'06:14',tx:'TX-88121',bus:'MH-12-KG-4501',drv:'S. Bhosale',dsp:2,kg:98.2},
-    {t:'06:41',tx:'TX-88134',bus:'MH-12-KG-4502',drv:'I. Shaikh',dsp:2,kg:104.7},
-    {t:'07:03',tx:'TX-88139',bus:'MH-12-KG-4523',drv:'R. More',dsp:3,kg:88.9},
-    {t:'07:22',tx:'TX-88142',bus:'MH-12-KG-4531',drv:'P. Gaikwad',dsp:1,kg:101.3},
-    {t:'07:45',tx:'TX-88147',bus:'MH-12-KG-4508',drv:'V. Salunkhe',dsp:4,kg:93.6},
+    {t:'05:58',tx:'TX-88118',bus:'DEMO-BUS-010',drv:'A. Kamble',dsp:1,kg:96.4},
+    {t:'06:14',tx:'TX-88121',bus:'DEMO-BUS-001',drv:'S. Bhosale',dsp:2,kg:98.2},
+    {t:'06:41',tx:'TX-88134',bus:'DEMO-BUS-002',drv:'I. Shaikh',dsp:2,kg:104.7},
+    {t:'07:03',tx:'TX-88139',bus:'DEMO-BUS-011',drv:'R. More',dsp:3,kg:88.9},
+    {t:'07:22',tx:'TX-88142',bus:'DEMO-BUS-012',drv:'P. Gaikwad',dsp:1,kg:101.3},
+    {t:'07:45',tx:'TX-88147',bus:'DEMO-BUS-013',drv:'V. Salunkhe',dsp:4,kg:93.6},
   ],
   'FS-PUN-2214':[
-    {t:'06:02',tx:'TX-87901',bus:'MH-12-KG-4501',drv:'S. Bhosale',dsp:2,kg:97.1},
-    {t:'06:31',tx:'TX-87911',bus:'MH-12-KG-4502',drv:'I. Shaikh',dsp:1,kg:106.2},
-    {t:'07:04',tx:'TX-87923',bus:'MH-12-KG-4519',drv:'A. Kamble',dsp:3,kg:91.8},
-    {t:'07:29',tx:'TX-87931',bus:'MH-12-KG-4523',drv:'R. More',dsp:2,kg:99.4},
+    {t:'06:02',tx:'TX-87901',bus:'DEMO-BUS-001',drv:'S. Bhosale',dsp:2,kg:97.1},
+    {t:'06:31',tx:'TX-87911',bus:'DEMO-BUS-002',drv:'I. Shaikh',dsp:1,kg:106.2},
+    {t:'07:04',tx:'TX-87923',bus:'DEMO-BUS-010',drv:'A. Kamble',dsp:3,kg:91.8},
+    {t:'07:29',tx:'TX-87931',bus:'DEMO-BUS-011',drv:'R. More',dsp:2,kg:99.4},
   ],
   'FS-NSK-1808':[
-    {t:'05:47',tx:'TX-88155',bus:'MH-15-KG-2210',drv:'G. Wagh',dsp:1,kg:112.4},
-    {t:'06:18',tx:'TX-88158',bus:'MH-15-KG-2216',drv:'D. Pagar',dsp:2,kg:95.7},
-    {t:'06:52',tx:'TX-88163',bus:'MH-15-KG-2219',drv:'S. Ahire',dsp:1,kg:103.1},
+    {t:'05:47',tx:'TX-88155',bus:'DEMO-BUS-005',drv:'G. Wagh',dsp:1,kg:112.4},
+    {t:'06:18',tx:'TX-88158',bus:'DEMO-BUS-014',drv:'D. Pagar',dsp:2,kg:95.7},
+    {t:'06:52',tx:'TX-88163',bus:'DEMO-BUS-015',drv:'S. Ahire',dsp:1,kg:103.1},
   ],
 };
 
@@ -3362,17 +3336,17 @@ const INV_ARCHIVE=[];
 /* Station operator authorization — appointed by Admin/Owner only; Owner free access everywhere */
 const ST_AUTH = {
   'ST-PUN-007':{operators:[
-    {name:'V. Jadhav', card:'KGS-2026-00104', by:'Owner (M. Qureshi)', at:'12 Jun 2026', shift:'On shift now'},
-    {name:'K. Chavan', card:'KGS-2026-00131', by:'Admin (A. Deshpande)', at:'25 Jun 2026', shift:'Off'},
+    {name:'Demo Person 11', card:'DEMO-CRED-001', by:'Demo Owner', at:'12 Jun 2026', shift:'On shift now'},
+    {name:'Demo Person 14', card:'DEMO-CRED-002', by:'Demo Admin', at:'25 Jun 2026', shift:'Off'},
   ]},
   'ST-NSK-013':{operators:[
-    {name:'M. Sonawane', card:'KGS-2026-00119', by:'Admin (A. Deshpande)', at:'18 Jun 2026', shift:'On shift now'},
+    {name:'Demo Person 09', card:'DEMO-CRED-003', by:'Demo Admin', at:'18 Jun 2026', shift:'On shift now'},
   ]},
 };
 
 /* Rate-change workflow: station request → Owner authorizes an Admin → that Admin applies → Owner alerted */
 let RATE_REQS = [
-  {id:'RR-0007', station:'ST-NSK-013', from:62.40, to:63.10, reason:'IOCL terminal price revision w.e.f. 21 Jul', raisedBy:'A. Deshpande (Admin)', at:'20 Jul · 09:12', status:'Pending Owner authorization', authAdmin:null, appliedAt:null},
+  {id:'RR-0007', station:'ST-NSK-013', from:62.40, to:63.10, reason:'IOCL terminal price revision w.e.f. 21 Jul', raisedBy:'Demo Person 03 (Admin)', at:'20 Jul · 09:12', status:'Pending Owner authorization', authAdmin:null, appliedAt:null},
 ];
 
 /* 8-hour stock reconciliation cycles (00:00 / 08:00 / 16:00 IST) — Coriolis sold vs ATG balance */
@@ -3435,7 +3409,7 @@ invoicePreview = function(no){
       <div style="display:flex;gap:10px;align-items:center">
         <img src="${KG_LOGO}" style="width:46px;height:46px">
         <div><div style="font-weight:800;letter-spacing:2.5px;color:#a8842c;font-size:15px">KINGS GAS PRIVATE LIMITED</div>
-        <div style="font-size:8.5px;color:#666;letter-spacing:.4px;line-height:1.6">Khar West, Mumbai, Maharashtra, India · GSTIN 27AAICK5225A1ZV · CIN U24290MH2020PTC352527<br>+91 90463 38555 · info@kingsgas.com · www.kingsgas.com</div></div>
+        <div style="font-size:8.5px;color:#666;letter-spacing:.4px;line-height:1.6">Khar West, Mumbai, Maharashtra, India · GSTIN 27AAICK5225A1ZV · CIN U24290MH2020PTC352527<br>00000 00001 · demo.user01@example.invalid · www.kingsgas.com</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:center">${stamp}<div style="text-align:right">${qrRaw('KGDOC|'+(i.dcn||i.no)+'|'+i.no+'|'+i.amt,76)}<div style="font-size:8px;color:#888;margin-top:3px">DCN ${i.dcn||'—'} · scan to verify</div></div></div>
     </div>
@@ -3618,7 +3592,7 @@ function manageAuth(stid){
     <p style="font-size:12.5px;color:var(--ink2);line-height:1.7">Only appointed staff may start or operate this station. ${S.role==='owner'?'<b>Owner: free access — appoint or revoke at any station.</b>':'Admin appointments are logged and visible to the Owner.'}</p>
     <table><tr><th>Operator</th><th>Card</th><th>Appointed by</th><th></th></tr>
     ${auth.operators.map((o,ix)=>`<tr><td>${o.name}</td><td class="mono">${o.card}</td><td>${o.by}</td><td><button class="btn btn-danger btn-sm" onclick="ST_AUTH['${stid}'].operators.splice(${ix},1);closeModal();manageAuth('${stid}');addFeed('🔐','Operator revoked at ${stid} by '+ROLES[S.role].user)">Revoke</button></td></tr>`).join('')}</table>
-    <div class="field" style="margin-top:12px"><label>Appoint new operator (staff ID card no)</label><input id="new-op" placeholder="e.g. KGS-2026-00142 · A. Patil"></div>
+    <div class="field" style="margin-top:12px"><label>Appoint new operator (staff ID card no)</label><input id="new-op" placeholder="e.g. DEMO-CRED-004 · A. Patil"></div>
   </div>
   <div class="modal-f"><button class="btn btn-ghost" onclick="closeModal()">Close</button>
   <button class="btn btn-gold" onclick="const v=el('new-op').value.trim();if(!v)return toast('Enter details','Provide the staff card no / name.','warn');ST_AUTH['${stid}'].operators.push({name:v.split('·')[1]?v.split('·')[1].trim():v,card:v.split('·')[0].trim(),by:'${S.role==='owner'?'Owner':'Admin'} ('+ROLES[S.role].user+')',at:today(),shift:'Off'});closeModal();addFeed('🔐','New operator appointed at ${stid} — '+v);toast('Operator appointed','Authorization active immediately; RFID + biometric bound at first shift.','good');render()">Appoint</button></div>`);
@@ -3640,10 +3614,10 @@ function rateRequest(stid){
 function rateAuthorize(id){
   if(S.role!=='owner') return toast('Owner only','Only the Owner can authorize an Admin for rate changes.','warn');
   const r=RATE_REQS.find(x=>x.id===id);
-  r.status='Authorized — pending Admin change'; r.authAdmin='A. Deshpande (Admin)';
-  ALERTS.unshift({t:'Rate change authorized — '+r.station, d:'Owner authorized Admin A. Deshpande to apply ₹'+r.from.toFixed(2)+' → ₹'+r.to.toFixed(2)+'/kg at '+r.station+'.', lvl:'info', time:nowT(), to:'Admin'});
+  r.status='Authorized — pending Admin change'; r.authAdmin='Demo Person 03 (Admin)';
+  ALERTS.unshift({t:'Rate change authorized — '+r.station, d:'Owner authorized Admin Demo Person 03 to apply ₹'+r.from.toFixed(2)+' → ₹'+r.to.toFixed(2)+'/kg at '+r.station+'.', lvl:'info', time:nowT(), to:'Admin'});
   addFeed('✅','Owner authorized Admin for rate change '+r.id+' at <b>'+r.station+'</b>');
-  toast('Admin authorized','A. Deshpande can now apply this rate change.','good'); render();
+  toast('Admin authorized','Demo Person 03 can now apply this rate change.','good'); render();
 }
 function rateApply(id){
   const r=RATE_REQS.find(x=>x.id===id);
@@ -3651,7 +3625,7 @@ function rateApply(id){
   if(S.role==='admin'&&r.status!=='Authorized — pending Admin change') return toast('Not authorized yet','Owner must authorize you for this change first.','warn');
   const st=STATIONS.find(s=>s.id===r.station); st.rate=r.to;
   r.status='Applied'; r.appliedAt=today()+' · '+nowT();
-  ALERTS.unshift({t:'ALERT: Selling rate changed — '+r.station, d:'Admin '+(r.authAdmin||'A. Deshpande')+' changed the rate at '+r.station+' from ₹'+r.from.toFixed(2)+' to ₹'+r.to.toFixed(2)+'/kg ('+r.id+'). All future fuelings bill at the new rate.', lvl:'crit', time:nowT(), to:'Owner'});
+  ALERTS.unshift({t:'ALERT: Selling rate changed — '+r.station, d:'Admin '+(r.authAdmin||'Demo Person 03')+' changed the rate at '+r.station+' from ₹'+r.from.toFixed(2)+' to ₹'+r.to.toFixed(2)+'/kg ('+r.id+'). All future fuelings bill at the new rate.', lvl:'crit', time:nowT(), to:'Owner'});
   addFeed('₹','Rate at <b>'+r.station+'</b> changed to ₹'+r.to.toFixed(2)+'/kg by authorized Admin — Owner alerted');
   toast('Rate applied — Owner alerted','New rate live at '+r.station+' automatically: ₹'+r.to.toFixed(2)+'/kg. All future fuelings bill at this rate.','good'); render();
 }
@@ -3709,7 +3683,7 @@ function render(){
 /* ---------- DATA ---------- */
 /* Attachment pack submitted to MSRTC with every inspection invite */
 const INSPECT_DOCS = {
-  'MH-12-KG-4503':[
+  'DEMO-BUS-003':[
     {n:'Road-trial report — 40 km', k:'PDF', sha:'9f2e…c1', at:'20 Jul · 16:42'},
     {n:'Leak test certificate (working pressure)', k:'PDF', sha:'b7a1…9d', at:'20 Jul · 16:40'},
     {n:'ICAT compliance pack', k:'PDF', sha:'e410…77', at:'20 Jul · 16:38'},
@@ -3768,7 +3742,7 @@ function rectCommit(bid,i){
   const note=el('rect-note').value.trim();
   if(!note) return toast('Note required','Describe the rectification done for this item.','warn');
   if(!el('rect-file').classList.contains('hasfile')) return toast('Evidence required','Attach rectification photos / documents.','warn');
-  RECTS[bid+':'+i]={note, at:today()+' · '+nowT(), by:'S. Pawar (GreenDrive)'};
+  RECTS[bid+':'+i]={note, at:today()+' · '+nowT(), by:'Demo Person 18 (GreenDrive)'};
   closeModal(); addFeed('🔧','Rectification uploaded for item '+(i+1)+' on <b>'+bid+'</b> — bound to checklist record');
   toast('Rectification saved','Attach the remaining items, then resubmit for re-inspection.','good'); render();
 }
@@ -3847,9 +3821,9 @@ function retroInvCards(){
   </table></div>`;
 }
 const KM_RECON = [
-  {bus:'MH-12-KG-4501', job:10542, rep:10542, tel:10542},
-  {bus:'MH-12-KG-4502', job:10118, rep:10118, tel:10118},
-  {bus:'MH-15-KG-2210', job:9872,  rep:9872,  tel:9872},
+  {bus:'DEMO-BUS-001', job:10542, rep:10542, tel:10542},
+  {bus:'DEMO-BUS-002', job:10118, rep:10118, tel:10118},
+  {bus:'DEMO-BUS-005', job:9872,  rep:9872,  tel:9872},
 ];
 function genMaintInvoice(){
   const rest=397658; /* remaining 38 buses aggregate */
@@ -3985,9 +3959,9 @@ function buildDossier(b){
     milestones:MILESTONES.map((m,ix)=>({t:m.t, done:'✓', files:2+(ix%3), ai:'AI verified', note:ix===2?'Tank bracket torque 210 Nm verified':ix===5?'Leak test 1.5× working pressure — passed':'Completed per SOP'})),
     intakePhotos:8,
     inspection:{
-      rounds: b.id==='MH-12-KG-4503'?2:1,
-      items:CHECKLIST.map((c,ix)=>({item:c, decision:'Approved', by:'P. Shinde (MSRTC)',
-        comment: ix===2&&b.id==='MH-12-KG-4503' ? 'Round 1: disapproved — leak retest demanded · Round 2: rectified & approved' : '—'})),
+      rounds: b.id==='DEMO-BUS-003'?2:1,
+      items:CHECKLIST.map((c,ix)=>({item:c, decision:'Approved', by:'Demo Person 13 (MSRTC)',
+        comment: ix===2&&b.id==='DEMO-BUS-003' ? 'Round 1: disapproved — leak retest demanded · Round 2: rectified & approved' : '—'})),
     },
     audit:'Every record hashed (SHA-256), timestamped, geo-stamped · Evidence Act §65B · immutable',
   };
@@ -4019,7 +3993,7 @@ function vDossier(){
     `<span class="chip gold">🔐 Scope: ${scope}</span>`)+
   `<div class="card"><div class="card-h"><div><h3>🗂 Punch Bus Number — retrieve records</h3><div class="sub">Every handed-over bus carries a sealed dossier: intake photos, milestone evidence & comments, certifications, inspection approvals/disapprovals with comments and rectifications. <b>View & share only — records cannot be edited by anyone.</b></div></div></div>
   <div class="card-b" style="display:flex;gap:10px;flex-wrap:wrap">
-    <input id="dos-q" placeholder="e.g. MH-12-KG-4501 or KGB-0412" style="max-width:320px" onkeydown="if(event.key==='Enter')dossierSearch()">
+    <input id="dos-q" placeholder="e.g. DEMO-BUS-001 or KGB-0412" style="max-width:320px" onkeydown="if(event.key==='Enter')dossierSearch()">
     <button class="btn btn-gold" onclick="dossierSearch()">⌕ Retrieve records</button>
   </div></div>
   <div class="card" style="margin-top:16px"><div class="card-h"><div><h3>Handed-over buses in your scope — ${list.length}</h3><div class="sub">Buses outside your authorization are invisible to this account.</div></div></div>
@@ -4094,9 +4068,9 @@ let DEMANDS=[
   {id:'DMD-1042', depot:'D-PUN-01', qty:10, requested:'28 Jul 2026', by:'Kings Gas (Owner)', at:'18 Jul 2026', delivered:1, status:'Open — deliveries in progress'},
 ];
 let DOCKETS={
-  'MH-15-KG-2211':{demand:'DMD-1042', bus:'MH-15-KG-2211', date:'19 Jul 2026', type:'Diesel BS-IV · 12 m · Parivartan', chassis:'MB1PBEHD4PRK54821', engine:'697TC59E4118834',
+  'DEMO-BUS-006':{demand:'DMD-1042', bus:'DEMO-BUS-006', date:'19 Jul 2026', type:'Diesel BS-IV · 12 m · Parivartan', chassis:'MB1PBEHD4PRK54821', engine:'697TC59E4118834',
     docs:['RC Book','Insurance policy','Fitness certificate','Road tax receipt','Stage-carriage permit','PUC certificate'],
-    submittedBy:'P. Shinde (MSRTC)', at:'19 Jul 2026 · 10:22', copies:'Retrofitter (GreenDrive) + Kings Gas depot manager (records)'},
+    submittedBy:'Demo Person 13 (MSRTC)', at:'19 Jul 2026 · 10:22', copies:'Retrofitter (GreenDrive) + Kings Gas depot manager (records)'},
 };
 
 /* demand creation now records the demand so MSRTC can deliver against it */
@@ -4135,7 +4109,7 @@ function vDocket(){
 function docketForm(dmdId){
   openModal(`<div class="modal-h"><h3>＋ Bus Info Docket — against ${dmdId}</h3><button class="x-btn" onclick="closeModal()">✕</button></div>
   <div class="modal-b">
-    <div class="field"><label>Bus registration number *</label><input id="dk-bus" placeholder="e.g. MH-12-KG-4590"></div>
+    <div class="field"><label>Bus registration number *</label><input id="dk-bus" placeholder="e.g. DEMO-BUS-016"></div>
     <div class="field"><label>Delivery date *</label><input type="date" id="dk-date"></div>
     <div class="field"><label>Bus type *</label><select id="dk-type"><option>Diesel BS-IV · 12 m · Parivartan</option><option>Diesel BS-III · 11 m · Hirkani</option><option>Diesel BS-IV · 9 m · Midi</option></select></div>
     <div class="field"><label>Chassis number *</label><input id="dk-chassis" placeholder="17-digit VIN, e.g. MB1PBEHD4PRK54xxx"></div>
@@ -4199,7 +4173,7 @@ function intakeAccept(id,cond){
     const note=el('cond-note').value.trim();
     if(!el('cond-pics').classList.contains('hasfile')) return toast('Photos required','Attach condition photos — the record is your protection.','warn');
     if(!note) return toast('Notes required','Describe the damage / issue found at handover.','warn');
-    b.intakeRecord={note, pics:4, at:today()+' · '+nowT(), by:'S. Pawar (GreenDrive)'};
+    b.intakeRecord={note, pics:4, at:today()+' · '+nowT(), by:'Demo Person 18 (GreenDrive)'};
     ALERTS.unshift({t:'Conditional intake — '+id, d:'Accepted with condition record: "'+note+'" + photos. Record synced to Kings Gas & MSRTC; contract terms unaffected.', lvl:'warn', time:nowT(), to:'KG Depot Manager · MSRTC · Owner'});
   }
   b.stage='conversion'; b.ms=0;
@@ -4268,7 +4242,7 @@ const SLA={ retrofitDays:7, inspectDays:2, penaltyPerDay:2000, clause:'Master Ag
 (function(){
   const now=Date.now();
   BUSES.forEach(b=>{
-    if(b.stage==='conversion'&&!b.intakeAt) b.intakeAt = b.id==='MH-14-KG-3308' ? now-10*864e5 : now-2*864e5;
+    if(b.stage==='conversion'&&!b.intakeAt) b.intakeAt = b.id==='DEMO-BUS-004' ? now-10*864e5 : now-2*864e5;
     if(b.stage==='inspection'&&!b.inspectInviteAt) b.inspectInviteAt = now-3*864e5;
     if(b.stage==='delivered'&&!b.deliveredAt) b.deliveredAt = now-0.5*864e5;
   });
@@ -4430,7 +4404,7 @@ function invLetterhead(i,st,stamp){
     <div style="display:flex;gap:10px;align-items:center">
       <img src="${KG_LOGO}" style="width:44px;height:44px">
       <div><div style="font-weight:800;letter-spacing:2.2px;color:#a8842c;font-size:14px">KINGS GAS PRIVATE LIMITED</div>
-      <div style="font-size:8px;color:#666;letter-spacing:.4px;line-height:1.6">Khar West, Mumbai, Maharashtra · GSTIN 27AAICK5225A1ZV · CIN U24290MH2020PTC352527 · +91 90463 38555 · www.kingsgas.com</div></div>
+      <div style="font-size:8px;color:#666;letter-spacing:.4px;line-height:1.6">Khar West, Mumbai, Maharashtra · GSTIN 27AAICK5225A1ZV · CIN U24290MH2020PTC352527 · 00000 00001 · www.kingsgas.com</div></div>
     </div>
     <div style="display:flex;gap:12px;align-items:center">${stamp||''}</div>
   </div>
@@ -4586,24 +4560,24 @@ ALERTS.unshift({t:'Master project invoice summary — 19 Jul', d:'One-page proje
 /* ---------- data ---------- */
 const TERMINALS=['IOCL LNG Terminal — Uran (JNPT)','GAIL Terminal — Dabhol','Shell Terminal — Hazira'];
 let LG_TRIPS=[
-  {id:'LGT-3312', tanker:'TNK-084', plate:'MH-46-AK-9917', driver:'K. Yadav', dl:'DL-MH46 20190004521',
+  {id:'LGT-3312', tanker:'TNK-084', plate:'DEMO-BUS-017', driver:'Demo Person 16', dl:'DL-DEMO-00001',
    from:'IOCL LNG Terminal — Uran (JNPT)', to:'ST-PUN-007', qty:18.5, date:'22 Jul 2026',
    status:'Planned — awaiting driver documents', docs:null, delivery:null, dn:null},
-  {id:'LGT-3309', tanker:'TNK-091', plate:'MH-46-BC-2214', driver:'R. Singh', dl:'DL-MH46 20180003318',
+  {id:'LGT-3309', tanker:'TNK-091', plate:'DEMO-BUS-018', driver:'Demo Person 17', dl:'DL-DEMO-00002',
    from:'GAIL Terminal — Dabhol', to:'ST-NSK-013', qty:18.5, date:'21 Jul 2026',
    status:'Delivered — reconciled ✓', docs:{qty:18.5, seal:'SL-88213/4', wm:'W&M/MH/2026/44810', loadedAt:'21 Jul · 06:12', geo:'17.59°N 73.18°E (Dabhol)'},
    delivery:{pre:31210, post:49630, received:18.42, variance:'−0.43%', verdict:'Within boil-off norm'},
    dn:{no:'DN-LGT-3309', dcn:'KG/DCN/2026/00349'}},
 ];
 let TANKER_PRESETS=[
-  {tanker:'TNK-084', plate:'MH-46-AK-9917', cap:18.5, driver:'K. Yadav', dl:'DL-MH46 20190004521'},
-  {tanker:'TNK-091', plate:'MH-46-BC-2214', cap:18.5, driver:'R. Singh', dl:'DL-MH46 20180003318'},
-  {tanker:'TNK-102', plate:'MH-46-CD-7741', cap:21.0, driver:'S. Pathan', dl:'DL-MH46 20210007702'},
+  {tanker:'TNK-084', plate:'DEMO-BUS-017', cap:18.5, driver:'Demo Person 16', dl:'DL-DEMO-00001'},
+  {tanker:'TNK-091', plate:'DEMO-BUS-018', cap:18.5, driver:'Demo Person 17', dl:'DL-DEMO-00002'},
+  {tanker:'TNK-102', plate:'DEMO-BUS-019', cap:21.0, driver:'Demo Person 12', dl:'DL-DEMO-00003'},
 ];
 let DELIVERY_NOTES=[ {no:'DN-LGT-3309', dcn:'KG/DCN/2026/00349', trip:'LGT-3309', date:'21 Jul 2026', station:'ST-NSK-013', qty:18.42, status:'Filed — Accounts'} ];
 
 /* tanker driver login — logistics documents only */
-ROLES.tanker={name:'Tanker Driver — Delivery Docs', icon:'🛢', desc:'Upload delivery note, challan & W&M receipt (photo-only) before starting from the terminal.', user:'K. Yadav (TNK-084)', short:'KY'};
+ROLES.tanker={name:'Tanker Driver — Delivery Docs', icon:'🛢', desc:'Upload delivery note, challan & W&M receipt (photo-only) before starting from the terminal.', user:'Demo Person 16 (TNK-084)', short:'KY'};
 NAV_BY_ROLE.tanker=[['TANKER — TNK-084'],['logistics','🚚','My Trip & Documents'],['alerts','🔔','Alerts']];
 
 /* auto low-level notifications → Logistics + Admin + Owner */
@@ -4629,7 +4603,7 @@ function lgPlanTrip(destId){
   <div class="modal-b">
     <div class="field"><label>Tanker (preset credentials)</label><select id="lg-tk">${TANKER_PRESETS.map(p=>`<option value="${p.tanker}">${p.tanker} · ${p.plate} · ${p.cap} t · ${p.driver}</option>`).join('')}<option value="NEW">＋ New tanker (register credentials)</option></select></div>
     <div id="lg-new" style="display:none">
-      <div class="field"><label>Plate no</label><input id="lg-plate" placeholder="MH-46-XX-0000"></div>
+      <div class="field"><label>Plate no</label><input id="lg-plate" placeholder="DEMO-BUS-020"></div>
       <div class="field"><label>Capacity (t)</label><input id="lg-cap" type="number" value="18.5"></div>
       <div class="field"><label>Driver name · DL no</label><input id="lg-drv" placeholder="Name · DL-MH46 2026000xxxx"></div>
     </div>
@@ -4821,7 +4795,7 @@ vAccounts=function(){
 
 /* per-vehicle & per-driver activity log (their related activities only) */
 let TANKER_LOG={
-  'TNK-091':[{trip:'LGT-3309', date:'21 Jul 2026', station:'ST-NSK-013', qty:18.42, drn:'DN-LGT-3309', driver:'R. Singh'}],
+  'TNK-091':[{trip:'LGT-3309', date:'21 Jul 2026', station:'ST-NSK-013', qty:18.42, drn:'DN-LGT-3309', driver:'Demo Person 17'}],
 };
 
 /* ---------- logistics: view driver-uploaded trip documents (auto-extracted) ---------- */
@@ -4926,7 +4900,7 @@ recvCommit=function(id){
 function drnStationCard(){
   const st=STATIONS[0];
   const mine=DELIVERY_NOTES.filter(d=>d.station===st.id);
-  return `<div class="card" style="margin-top:16px"><div class="card-h"><div><h3>🧾 Delivery-Received Notes — this station</h3><div class="sub">Generated automatically at every reception. Also filed with the Owner & Admin (Accounts) and closed onto the vehicle/driver account in Logistics.</div></div></div>
+  return `<div class="card" style="margin-top:16px"><div class="card-h"><div><h3>🧾 Delivery-Received Notes — this station</h3><div class="sub">Generated automatically at every reception. Also filed with the Owner & Demo Admin and closed onto the vehicle/driver account in Logistics.</div></div></div>
   <table><tr><th>DRN / DCN</th><th>Trip</th><th>Date</th><th>Received</th><th>Status</th><th></th></tr>
   ${mine.map(d=>`<tr><td><b>${d.no}</b><div style="font-size:10px;color:var(--muted)">${d.dcn}</div></td><td>${d.trip}</td><td>${d.date}</td><td class="num">${d.qty} t</td><td><span class="chip good">${d.status}</span></td>
   <td><button class="btn btn-ghost btn-sm" onclick="openDeliveryNote('${d.no}')">🧾 View</button></td></tr>`).join('')||'<tr><td colspan="6"><div class="empty">No deliveries received yet.</div></td></tr>'}</table></div>`;
@@ -4936,7 +4910,7 @@ vFuel=function(){ return _vFuel21()+drnStationCard(); };
 
 /* ---------- driver: sees ONLY their related activities ---------- */
 driverTripView=function(){
-  const me='K. Yadav';
+  const me='Demo Person 16';
   const mine=LG_TRIPS.filter(t=>t.driver===me);
   const t=mine.find(x=>!x.dn)||mine[0];
   const myLog=Object.values(TANKER_LOG).flat().filter(l=>l.driver===me);
@@ -4964,10 +4938,10 @@ driverTripView=function(){
 /* Grantable by: Logistics Command supervisor, Admin, Owner. Revocable ANY TIME by
    supervisor or admin (and owner) — payroll, third-party or one-time alike. */
 let DRIVER_ACCESS=[
-  {id:'DA-001', name:'K. Yadav',  dl:'DL-MH46 20190004521', mobile:'98220 11223', type:'Permanent — payroll',        transporter:'Kings Gas (payroll)',      cred:'KGS-2026-00171', validity:'Ongoing',            status:'Active',  by:'Owner (M. Qureshi)', at:'12 Jun 2026'},
-  {id:'DA-002', name:'R. Singh',  dl:'DL-MH46 20180003318', mobile:'99700 55110', type:'Permanent — payroll',        transporter:'Kings Gas (payroll)',      cred:'KGS-2026-00172', validity:'Ongoing',            status:'Active',  by:'Admin (A. Deshpande)', at:'12 Jun 2026'},
-  {id:'DA-003', name:'S. Pathan', dl:'DL-MH46 20210007702', mobile:'90040 78812', type:'Third-party — transporter',  transporter:'M/s Sai Roadlines LLP',    cred:'TP-PASS-0031',   validity:'Till contract end',  status:'Active',  by:'Logistics (N. Iyer)', at:'02 Jul 2026'},
-  {id:'DA-004', name:'B. Rathod', dl:'DL-MH12 20170002215', mobile:'98500 33441', type:'One-time — single delivery', transporter:'M/s Vijay Bulk Carriers',  cred:'TP-PASS-0042',   validity:'One trip · exp 15 Jul', status:'Revoked', by:'Logistics (N. Iyer)', at:'14 Jul 2026', revokedBy:'Admin (A. Deshpande)', revokedAt:'15 Jul 2026 · 21:04'},
+  {id:'DA-001', name:'Demo Person 16',  dl:'DL-DEMO-00001', mobile:'00000 00002', type:'Permanent — payroll',        transporter:'Kings Gas (payroll)',      cred:'DEMO-CRED-005', validity:'Ongoing',            status:'Active',  by:'Demo Owner', at:'12 Jun 2026'},
+  {id:'DA-002', name:'Demo Person 17',  dl:'DL-DEMO-00002', mobile:'00000 00003', type:'Permanent — payroll',        transporter:'Kings Gas (payroll)',      cred:'DEMO-CRED-006', validity:'Ongoing',            status:'Active',  by:'Demo Admin', at:'12 Jun 2026'},
+  {id:'DA-003', name:'Demo Person 12', dl:'DL-DEMO-00003', mobile:'00000 00004', type:'Third-party — transporter',  transporter:'M/s Sai Roadlines LLP',    cred:'TP-PASS-0031',   validity:'Till contract end',  status:'Active',  by:'Logistics (Demo Person 19)', at:'02 Jul 2026'},
+  {id:'DA-004', name:'Demo Person 15', dl:'DL-DEMO-00004', mobile:'00000 00005', type:'One-time — single delivery', transporter:'M/s Vijay Bulk Carriers',  cred:'TP-PASS-0042',   validity:'One trip · exp 15 Jul', status:'Revoked', by:'Logistics (Demo Person 19)', at:'14 Jul 2026', revokedBy:'Demo Admin', revokedAt:'15 Jul 2026 · 21:04'},
 ];
 
 function canManageDrivers(){ return ['logistics','admin','owner'].includes(S.role); }
@@ -5039,8 +5013,8 @@ function revokeDriver(id){
   const d=DRIVER_ACCESS.find(x=>x.id===id);
   d.status='Revoked'; d.revokedBy=ROLES[S.role].user; d.revokedAt=today()+' · '+nowT();
   addFeed('⛔','Driver access REVOKED — <b>'+d.name+'</b> ('+d.cred+') by '+ROLES[S.role].user+' · login killed, credential denylisted on all readers');
-  ALERTS.unshift({t:'Driver access revoked — '+d.name, d:d.cred+' revoked by '+ROLES[S.role].user+'. Active session terminated; credential denylisted within 60 s. Open trips reassigned by Logistics.', lvl:'warn', time:nowT(), to:'Logistics · Admin · Owner'});
-  toast('Access revoked','Login terminated immediately; credential denylisted. Fully reversible via Re-grant.','warn'); render();
+  ALERTS.unshift({t:'Driver access revoked — '+d.name, d:d.cred+' revoked by '+ROLES[S.role].user+'. Simulation state updated locally; no live session or credential was changed. Open trips reassigned by Logistics.', lvl:'warn', time:nowT(), to:'Logistics · Admin · Owner'});
+  toast('Access revoked','Simulation state changed locally only. Fully reversible via Re-grant.','warn'); render();
 }
 function regrantDriver(id){
   if(!canManageDrivers()) return toast('Not permitted','Only the Logistics supervisor, Admin or Owner re-grant access.','crit');
@@ -5053,7 +5027,7 @@ function regrantDriver(id){
 /* driver login honours revocation instantly */
 const _driverTripView22=driverTripView;
 driverTripView=function(){
-  const acc=DRIVER_ACCESS.find(d=>d.name==='K. Yadav');
+  const acc=DRIVER_ACCESS.find(d=>d.name==='Demo Person 16');
   if(acc&&acc.status==='Revoked')
     return pageH('My Trip & Documents','Access revoked')+
     `<div class="card"><div class="empty">⛔ Your access has been revoked by ${acc.revokedBy||'the Logistics supervisor'} (${acc.revokedAt||''}).<br>Contact the Logistics Command Centre. This screen and the attempt are logged.</div></div>`;
@@ -5080,15 +5054,15 @@ vLogistics=function(){
 
 const TRANSPORT_LOSS_NORM_PCT = 0.5;
 let DRIVER_INCIDENTS = {
-  'S. Pathan':[{trip:'LGT-3308', date:'20 Jul 2026', declared:18.5, received:17.91, varPct:'-3.19%', status:'Under investigation — joint approval pending', note:'Missing quantity beyond transport-loss norm at ST-PUN-007'}],
+  'Demo Person 12':[{trip:'LGT-3308', date:'20 Jul 2026', declared:18.5, received:17.91, varPct:'-3.19%', status:'Under investigation — joint approval pending', note:'Missing quantity beyond transport-loss norm at ST-PUN-007'}],
 };
 let HELD_DRNS = [
-  {id:'HOLD-3308', trip:'LGT-3308', station:'ST-PUN-007', depot:'D-PUN-01', tanker:'TNK-102', driver:'S. Pathan',
+  {id:'HOLD-3308', trip:'LGT-3308', station:'ST-PUN-007', depot:'D-PUN-01', tanker:'TNK-102', driver:'Demo Person 12',
    declared:18.5, received:17.91, varPct:'-3.19%', at:'20 Jul 2026 · 18:44',
    apprAdmin:null, apprDepot:null, status:'HELD — abnormal missing quantity'},
 ];
 /* seed the held trip + make today's inbound trip immediately actionable at the station */
-LG_TRIPS.push({id:'LGT-3308', tanker:'TNK-102', plate:'MH-46-CD-7741', driver:'S. Pathan', dl:'DL-MH46 20210007702',
+LG_TRIPS.push({id:'LGT-3308', tanker:'TNK-102', plate:'DEMO-BUS-019', driver:'Demo Person 12', dl:'DL-DEMO-00003',
   from:'IOCL LNG Terminal — Uran (JNPT)', to:'ST-PUN-007', qty:18.5, date:'20 Jul 2026',
   status:'Delivery HELD — abnormal variance (joint approval pending)',
   docs:{qty:18.5, seal:'SL-88371/4', wm:'W&M/MH/2026/44822', loadedAt:'20 Jul · 07:02', geo:'18.88°N 72.95°E (Uran JNPT)'}, delivery:null, dn:null});
@@ -5202,7 +5176,7 @@ vehicleAccountsCard=function(){
 const _driverTripView23=driverTripView;
 driverTripView=function(){
   let out=_driverTripView23();
-  const mine=DRIVER_INCIDENTS['K. Yadav']||[];
+  const mine=DRIVER_INCIDENTS['Demo Person 16']||[];
   if(mine.length) out+=`<div class="card" style="margin-top:16px;border-color:rgba(208,59,59,.4)"><div class="card-h"><h3 style="color:#f2a0a0">⚠ Variance incidents on your account</h3></div>
   <table><tr><th>Trip</th><th>Date</th><th>Variance</th><th>Status</th></tr>${mine.map(i=>`<tr><td>${i.trip}</td><td>${i.date}</td><td class="num">${i.varPct}</td><td style="font-size:11px">${i.status}</td></tr>`).join('')}</table></div>`;
   return out;
@@ -5279,8 +5253,8 @@ vAccounts=function(){
    A depot manager who waives without recovery more than TWICE has the loss
    value raised against him as a penalty, with alerts to him, Admin and Owner. */
 
-let WAIVER_REASONS = { 'S. Pathan': { 'tanker prv valve vented during highway halt verified by cctv': true } };
-let DM_WAIVERS = { 'R. Kulkarni': 2 };   /* already at the threshold — next waiver triggers the penalty */
+let WAIVER_REASONS = { 'Demo Person 12': { 'tanker prv valve vented during highway halt verified by cctv': true } };
+let DM_WAIVERS = { 'Demo Person 06': 2 };   /* already at the threshold — next waiver triggers the penalty */
 const DM_WAIVER_LIMIT = 2;
 function normReason(s){ return s.toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim(); }
 
@@ -5315,8 +5289,8 @@ function approveHeldCommit(id,who){
   if(who==='admin'){ hd.apprAdmin=ROLES[S.role].user; hd.remAdmin=rec; }
   else { hd.apprDepot=ROLES[S.role].user; hd.remDepot=rec;
     if(type==='waiver'){
-      DM_WAIVERS[ROLES[S.role].user.split(' —')[0]]=DM_WAIVERS['R. Kulkarni']!==undefined?++DM_WAIVERS['R. Kulkarni']:1;
-      const n=DM_WAIVERS['R. Kulkarni'];
+      DM_WAIVERS[ROLES[S.role].user.split(' —')[0]]=DM_WAIVERS['Demo Person 06']!==undefined?++DM_WAIVERS['Demo Person 06']:1;
+      const n=DM_WAIVERS['Demo Person 06'];
       if(n>DM_WAIVER_LIMIT){
         const lossInr=Math.round((hd.declared-hd.received)*1000*62.4);
         CLAIMS.unshift({id:'CLM-DMW-'+hd.id.replace('HOLD-',''), title:'Penalty — repeated waiver approvals without recovery by KG depot manager ('+hd.depot+')',
@@ -5358,8 +5332,8 @@ heldCard=function(){
   });
   out+=`<div class="card" style="margin-top:16px"><div class="card-h"><div><h3>📒 Waiver Ledger — depot manager discipline</h3><div class="sub">One-time waivers are tracked per approver. A repeated waiver reason still closes the trip, but an inquiry auto-opens against BOTH approvers — their detailed explanation goes directly to the Owner; rejection brings loss-recovery penalties and referral to Legal.</div></div></div>
   <table><tr><th>KG depot manager</th><th>Waivers used</th><th>Limit</th><th>Status</th></tr>
-  <tr><td><b>R. Kulkarni (D-PUN-01)</b></td><td class="num">${DM_WAIVERS['R. Kulkarni']||0}</td><td class="num">${DM_WAIVER_LIMIT}</td>
-  <td>${(DM_WAIVERS['R. Kulkarni']||0)>DM_WAIVER_LIMIT?'<span class="chip crit">LIMIT EXCEEDED — penalty raised, inquiry open</span>':(DM_WAIVERS['R. Kulkarni']||0)>=DM_WAIVER_LIMIT?'<span class="chip warn">At limit — next waiver triggers penalty of losses</span>':'<span class="chip good">Within limit</span>'}</td></tr></table></div>`;
+  <tr><td><b>Demo Person 06 (D-PUN-01)</b></td><td class="num">${DM_WAIVERS['Demo Person 06']||0}</td><td class="num">${DM_WAIVER_LIMIT}</td>
+  <td>${(DM_WAIVERS['Demo Person 06']||0)>DM_WAIVER_LIMIT?'<span class="chip crit">LIMIT EXCEEDED — penalty raised, inquiry open</span>':(DM_WAIVERS['Demo Person 06']||0)>=DM_WAIVER_LIMIT?'<span class="chip warn">At limit — next waiver triggers penalty of losses</span>':'<span class="chip good">Within limit</span>'}</td></tr></table></div>`;
   return out;
 };
 
@@ -5416,7 +5390,7 @@ function approveHeldCommit(id,who){
   }
   const rec={type:type==='trip'?'Recover — transporter trip cost':type==='salary'?'Recover — driver salary':'ONE-TIME WAIVER', note, amount, repeat, by:ROLES[S.role].user, at:today()+' · '+nowT()};
   if(who==='admin'){ hd.apprAdmin=ROLES[S.role].user; hd.remAdmin=rec; } else { hd.apprDepot=ROLES[S.role].user; hd.remDepot=rec;
-    if(type==='waiver') DM_WAIVERS['R. Kulkarni']=(DM_WAIVERS['R. Kulkarni']||0)+1; }
+    if(type==='waiver') DM_WAIVERS['Demo Person 06']=(DM_WAIVERS['Demo Person 06']||0)+1; }
   closeModal();
   if(hd.apprAdmin&&hd.apprDepot){
     const t=LG_TRIPS.find(x=>x.id===hd.trip);
@@ -5602,17 +5576,17 @@ const ADMIN_SUBROLES={
   'Legal & Compliance':{desc:'Legal & Contracts module only',                         mods:['Legal & Contracts','Claims (read)','Dossiers (read)']},
 };
 /* enrich existing users + add examples of sub-roles & sign-in methods */
-USERS.forEach(u=>{ u.email=u.email||(u.name.toLowerCase().replace(/[^a-z]/g,'.').replace(/\.+/g,'.')+'@kingsgas.com'); u.signin=u.signin||'Username + password'; u.sub=u.sub||null; u.last=u.last||'Today · 09:1'+(2+(u.name.length%7)); });
-USERS[0].email='mohammedqureshi473@gmail.com'; USERS[0].signin='Google (Gmail)';
+USERS.forEach(u=>{ u.email=u.email||(u.name.toLowerCase().replace(/[^a-z]/g,'.').replace(/\.+/g,'.')+'@example.invalid'); u.signin=u.signin||'Username + password'; u.sub=u.sub||null; u.last=u.last||'Today · 09:1'+(2+(u.name.length%7)); });
+USERS[0].email='demo.user02@example.invalid'; USERS[0].signin='Google (Gmail)';
 USERS[1].sub='Admin Manager';
 USERS.push(
- {name:'F. D Souza',  role:'Admin', sub:'Admin Accounts', scope:'All (accounts only)', card:'RF-00-0007', status:'Active',  email:'f.dsouza@kingsgas.com',  signin:'Google (Gmail)',        last:'Today · 08:44'},
- {name:'T. Nair',     role:'Admin', sub:'Admin IT',       scope:'All (devices only)',  card:'RF-00-0008', status:'Active',  email:'t.nair@kingsgas.com',    signin:'Username + password',   last:'Yesterday · 18:02'},
- {name:'K. Yadav',    role:'Tanker Driver', sub:null,     scope:'Own trips only',      card:'KGS-2026-00171', status:'Active', email:'—', signin:'Card no + OTP',        last:'Today · 06:25'},
- {name:'S. Iyer',     role:'Admin', sub:'Admin HR',       scope:'All (staff only)',    card:'—',          status:'Invited — awaiting first sign-in', email:'s.iyer@kingsgas.com', signin:'Google (Gmail)', last:'—'}
+ {name:'Demo Person 10',  role:'Admin', sub:'Admin Accounts', scope:'All (accounts only)', card:'DEMO-RFID-012', status:'Active',  email:'demo.user03@example.invalid',  signin:'Google (Gmail)',        last:'Today · 08:44'},
+ {name:'Demo Person 20',     role:'Admin', sub:'Admin IT',       scope:'All (devices only)',  card:'DEMO-RFID-013', status:'Active',  email:'demo.user04@example.invalid',    signin:'Username + password',   last:'Yesterday · 18:02'},
+ {name:'Demo Person 16',    role:'Tanker Driver', sub:null,     scope:'Own trips only',      card:'DEMO-CRED-005', status:'Active', email:'—', signin:'Card no + OTP',        last:'Today · 06:25'},
+ {name:'Demo Person 21',     role:'Admin', sub:'Admin HR',       scope:'All (staff only)',    card:'—',          status:'Invited — awaiting first sign-in', email:'demo.user05@example.invalid', signin:'Google (Gmail)', last:'—'}
 );
 let INVITES=[
- {id:'INV-U-014', email:'s.iyer@kingsgas.com', role:'Admin', sub:'Admin HR', scope:'All (staff only)', method:'Google (Gmail)', by:'Owner', at:'23 Jul 2026', status:'Sent — link valid 7 days'},
+ {id:'INV-U-014', email:'demo.user05@example.invalid', role:'Admin', sub:'Admin HR', scope:'All (staff only)', method:'Google (Gmail)', by:'Owner', at:'23 Jul 2026', status:'Sent — link valid 7 days'},
 ];
 
 function vUsers(){
@@ -5630,9 +5604,9 @@ function vUsers(){
     <td><span class="chip ${String(u.status)==='Active'?'good':String(u.status).includes('Invited')?'warn':'crit'}">${u.status}</span></td>
     <td style="white-space:nowrap">${u.role!=='Owner'?(String(u.status).includes('Suspended')
       ?`<button class="btn btn-ghost btn-sm" onclick="USERS[${ix}].status='Active';addFeed('👥','${u.name} reactivated by '+ROLES[S.role].user);render()">Reactivate</button>`
-      :`<button class="btn btn-danger btn-sm" onclick="USERS[${ix}].status='Suspended';addFeed('⛔','${u.name} suspended by '+ROLES[S.role].user+' — sign-in blocked immediately');toast('Suspended','Sign-in blocked; sessions terminated.','warn');render()">Suspend</button>`):''}</td></tr>`).join('')}
+      :`<button class="btn btn-danger btn-sm" onclick="USERS[${ix}].status='Suspended';addFeed('⛔','${u.name} suspended by '+ROLES[S.role].user+' — sign-in blocked immediately');toast('Suspended','Simulation state changed; no real sign-in or session was affected.','warn');render()">Suspend</button>`):''}</td></tr>`).join('')}
   </table></div>
-  <div class="card" style="margin-top:16px"><div class="card-h"><div><h3>✉ Pending Invitations</h3><div class="sub">The invitation email carries a secure one-time link. The role is fixed at invite time — the person can only ever open what you authorised; changing it later needs Owner/Admin.</div></div></div>
+  <div class="card" style="margin-top:16px"><div class="card-h"><div><h3>✉ Pending Invitations</h3><div class="sub">Simulation only: no invitation email or token is generated. This screen demonstrates the proposed approval and scope model.</div></div></div>
   <table><tr><th>Invite</th><th>Email</th><th>Role / sub-role</th><th>Scope</th><th>Sign-in</th><th>Sent by</th><th>Status</th><th></th></tr>
   ${INVITES.map((iv,ix)=>`<tr><td><b>${iv.id}</b></td><td>${iv.email}</td><td>${iv.role}${iv.sub?' · '+iv.sub:''}</td><td style="font-size:11px">${iv.scope}</td><td style="font-size:11px">${iv.method}</td><td>${iv.by}<div style="font-size:10px;color:var(--muted)">${iv.at}</div></td><td><span class="chip warn">${iv.status}</span></td>
   <td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="toast('Re-sent','Invitation email re-sent with a fresh 7-day link.','good')">Resend</button> <button class="btn btn-danger btn-sm" onclick="INVITES.splice(${ix},1);toast('Cancelled','Invitation link voided.','warn');render()">Cancel</button></td></tr>`).join('')||'<tr><td colspan="8"><div class="empty">No pending invitations.</div></td></tr>'}
@@ -5645,7 +5619,7 @@ function vUsers(){
 function inviteUser(){
   openModal(`<div class="modal-h"><h3>✉ Invite User</h3><button class="x-btn" onclick="closeModal()">✕</button></div>
   <div class="modal-b">
-    <div class="field"><label>Email address * (Gmail or company email)</label><input id="iu-email" placeholder="name@gmail.com / name@kingsgas.com"></div>
+    <div class="field"><label>Email address * (Gmail or company email)</label><input id="iu-email" placeholder="demo.user06@example.invalid / demo.user07@example.invalid"></div>
     <div class="field"><label>Role *</label><select id="iu-role" onchange="el('iu-sub-w').style.display=this.value==='Admin'?'block':'none'">
       <option>Kings Gas Depot Manager</option><option>Retrofitter Supervisor</option><option>Fuel Station Supervisor</option>
       <option>MSRTC Depot Manager</option><option>MSRTC HQ (view only)</option><option>Logistics Supervisor</option>
