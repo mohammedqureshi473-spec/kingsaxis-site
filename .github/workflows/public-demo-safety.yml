@@ -1,0 +1,41 @@
+name: Public Demo Safety
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "README.md"
+      - "scripts/check-public-demo-safety.mjs"
+      - ".github/workflows/public-demo-safety.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "README.md"
+      - "scripts/check-public-demo-safety.mjs"
+      - ".github/workflows/public-demo-safety.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  public-demo-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate checker syntax
+        run: node --check scripts/check-public-demo-safety.mjs
+
+      - name: Check public demo privacy and claims
+        run: node scripts/check-public-demo-safety.mjs
